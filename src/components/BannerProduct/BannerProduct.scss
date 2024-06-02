@@ -1,0 +1,32 @@
+.swiper-button-next,
+.swiper-button-prev {
+    color: pink;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Optional: Adjust the size of the buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 44px;
+    height: 44px;
+}
+
+/* Custom styles for pagination bullets */
+.swiper-pagination-bullet {
+    background: pink;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ff69b4;
+    /* A darker shade of pink for the active bullet */
+}

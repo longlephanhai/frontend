@@ -1,0 +1,41 @@
+/* .header {
+    height: 64px;
+    box-shadow: 0 2px 8px #f0f1f2;
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 40;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 24px;
+  }
+  
+  .search-bar {
+    flex: 1;
+    margin-left: 24px;
+  }
+  
+  .user-menu {
+    position: relative;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .logout-button, .login-button {
+    background-color: #eb2f96;
+    border: none;
+  }
+  
+  .logout-button:hover, .login-button:hover {
+    background-color: #c41d7f;
+  }
+   */
