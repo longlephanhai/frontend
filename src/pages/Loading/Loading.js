@@ -10,14 +10,12 @@ const Loading = () => {
       setLoading(false);
     }, 5000);
   }, []);
-
   const override = {
     display: "flex",
     margin: "30vh auto",
     alignItems: "center",
     justifyContent: "center",
   };
-
   return (
     <div className='bg-pink-400 h-screen flex justify-center items-center'>
       <RingLoader

@@ -73,7 +73,6 @@ const ProductDetail = () => {
                     productImageListLoading.map((item, index) => {
                       return (
                         <div key={index} className='h-20 w-20 bg-slate-200 rounded animate-pulse'>
-
                         </div>
                       )
                     })

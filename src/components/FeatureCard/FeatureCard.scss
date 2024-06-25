@@ -1,0 +1,22 @@
+.feature-about-area .icon-box span {
+  animation: spinAround 9s linear infinite;
+}
+
+@keyframes spinAround {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom hover effect */
+.inner-content:hover .icon-box {
+  border: 2px solid transparent;
+}
+
+.inner-content:hover .icon-box span {
+  opacity: 1;
+  transform: scale(1);
+}

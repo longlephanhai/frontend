@@ -11,7 +11,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './Horizontal.scss'
+import './Horizonta.scss'
+import hoa from '../../assest/assest/hoq (1).webp'
 const HorizontalCartProduct = ({ category, heading }) => {
   const [data, setData] = useState([])
   // const scrollElement = useRef()
@@ -30,7 +31,9 @@ const HorizontalCartProduct = ({ category, heading }) => {
   }, [])
   return (
     <div className='container mx-auto px-4 my-8' id='products'>
-      <h2 className='text-3xl font-bold py-6'>{heading}</h2>
+      <h2 className='text-3xl text-pink-400 py-6 flex items-center justify-center'>{heading}
+        <img src={hoa} alt='' width={50} height={"auto"} />
+      </h2>
       <div className='relative'>
         <Swiper
           spaceBetween={16}

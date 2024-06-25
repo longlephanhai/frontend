@@ -16,7 +16,7 @@ import Verify from "../pages/Verify/Verify";
 import MyOrder from "../pages/MyOrder/MyOrder";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import PageCalendar from "../pages/Calendar/PageCalendar";
-import Myteam from "../pages/Myteam/Myteam";
+// import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -91,8 +91,8 @@ export const router = createBrowserRouter([
       },
     ]
   },
-  {
-    path: '/myteam',
-    element: <Myteam />
-  },
+  // {
+  //   path:"/about-us",
+  //   element:<AboutUs/>
+  // },
 ])

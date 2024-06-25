@@ -5,6 +5,9 @@
 .scrollbar-none::-webkit-scrollbar{
     display:none
 }
+html {
+  scroll-behavior: smooth;
+}
 /* CSS */
 @keyframes fade-in {
   from {

@@ -1,0 +1,59 @@
+.brand {
+    padding: 20px;
+    background-color: #FFF3F3;
+  }
+  
+  .brand-row {
+    align-items: center;
+  }
+  
+  .brand-title-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .brand-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .brand-slider-col {
+    padding: 10px;
+  }
+  
+  .brand-swiper {
+    padding: 20px 0;
+  }
+  
+  .brand-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .brand-image {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    transition: transform 0.3s;
+  }
+  
+  .brand-image:hover {
+    transform: scale(1.1);
+  }
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #FFF3F3;
+  }
+@media (max-width: 640px) {
+    .brand-image {
+      max-width: 80px;
+    }
+  }
+  

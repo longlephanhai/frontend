@@ -25,3 +25,23 @@
         margin-right:10%;
     }
 } */
+/* @media (max-width: 768px) {
+    .md\\:block {
+      display: none;
+    }
+  
+    .md\\:hidden {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .md\\:block {
+      display: block;
+    }
+  
+    .md\\:hidden {
+      display: none;
+    }
+  }
+   */

@@ -18,7 +18,7 @@ import './BannerProduct.scss'
 const BannerProduct = () => {
   const desktopImages = [banner1, banner2, banner3, banner4, banner5, banner1_mobile, banner2_mobile, banner3_mobile, banner4_mobile, banner5_mobile];
   return (
-    <div className='container mx-auto px-4 rounded'>
+    <div className=' rounded'>
       <div className='h-[60vh] md:h-[60vh] w-full bg-slate-200 relative'>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
