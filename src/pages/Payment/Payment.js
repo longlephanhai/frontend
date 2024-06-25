@@ -7,7 +7,7 @@ import axios from 'axios'
 const Payment = () => {
 
   const { Item } = Form;
-  const url = "https://backend-cosmetics.onrender.com";
+  const url = "https://backend-jyob.onrender.com";
   const [cartItem, setCartItem] = useState([]);
   const [productList, setProductList] = useState([]);
 
