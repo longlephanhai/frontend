@@ -7,7 +7,7 @@ import axios from 'axios'
 const Payment = () => {
 
   const { Item } = Form;
-  const url = "http://localhost:8080";
+  const url = "https://backend-cosmetics.onrender.com";
   const [cartItem, setCartItem] = useState([]);
   const [productList, setProductList] = useState([]);
 

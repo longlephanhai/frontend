@@ -7,7 +7,7 @@ const Verify = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const success = searchParams.get("success");
     const orderId = searchParams.get("orderId");
-    const url = "http://localhost:8080"
+    const url = "https://backend-cosmetics.onrender.com"
     const navigate = useNavigate();
     const verifyPayment = async () => {
         const response = await axios.post(url + "/api/verify", { success, orderId });
