@@ -9,6 +9,8 @@ import displayUSDCurrency from '../../helpers/displayCurrency/displayCurrency';
 import CategoryDisplayProduct from '../../components/CategoryDisplayProduct/CategoryDisPlayProduct';
 import addToCart from '../../helpers/addToCart/addToCart';
 import Context from '../../context';
+import ReviewProduct from '../../components/ReviewProduct/ReviewProduct';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 const ProductDetail = () => {
   const navigate = useNavigate()
   const [data, setData] = useState({
@@ -57,6 +59,11 @@ const ProductDetail = () => {
     fetchUserAddToCart()
     navigate("/cart")
   }
+  const [showReviews, setShowReviews] = useState(false);
+
+  const toggleReviews = () => {
+    setShowReviews(!showReviews);
+  };
   return (
     <div className='container mx-auto p-4'>
       <div className='min-h-[200px] flex flex-col lg:flex-row gap-4'>
@@ -131,7 +138,22 @@ const ProductDetail = () => {
 
         }
       </div>
-
+      <div className="container mx-auto p-4">
+        <div className="my-4">
+          <button
+            onClick={toggleReviews}
+            className="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded-lg hover:bg-pink-600 transition duration-300"
+          >
+            {showReviews ? <IoIosArrowDown /> : <IoIosArrowUp />}
+            <span>{showReviews ? 'Hide Reviews' : 'Show Reviews'}</span>
+          </button>
+          {showReviews && (
+            <div className="overflow-hidden transition-all duration-500 ease-in-out">
+              <ReviewProduct productId={params} />
+            </div>
+          )}
+        </div>
+      </div>
       {
         data.category && (
           <CategoryDisplayProduct category={data?.category} heading={"Recommended Product"} />

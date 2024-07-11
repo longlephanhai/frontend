@@ -15,9 +15,11 @@ const Home = () => {
       <div className=''>
         <BannerProduct />
       </div>
-      <Brand/>
-      <BannerItems/>
-      <Countdown targetDate={targetDate}/>
+
+      <Brand />
+      {/* <FeatureArea className='mt-7' /> */}
+      <BannerItems />
+      <Countdown targetDate={targetDate} />
       <div className='m-4 mt-6' id="category">
         <CategoryList />
       </div>
@@ -29,7 +31,6 @@ const Home = () => {
       <HorizontalCartProduct category={"serum"} heading={"Top's Serum"} />
       <HorizontalCartProduct category={"sunscreen"} heading={"Top's Sunscreen"} />
       <HorizontalCartProduct category={"toner"} heading={"Top's Toner"} />
-      <FeatureArea className='mt-4' />
       {/* <ProductArea/> */}
     </>
   )

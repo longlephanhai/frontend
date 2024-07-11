@@ -33,23 +33,26 @@ const Brand = () => {
             className='brand-swiper'
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
               640: {
-                slidesPerView:2,
+                slidesPerView: 1,
               },
               768: {
-                slidesPerView: 3,
+                slidesPerView: 1,
               },
               1024: {
                 slidesPerView: 5,
               },
             }}
           >
-            <SwiperSlide className='brand-slide'><img src={brand1} alt='Brand 1' className='brand-image'/></SwiperSlide>
-            <SwiperSlide className='brand-slide'><img src={brand2} alt='Brand 2' className='brand-image'/></SwiperSlide>
-            <SwiperSlide className='brand-slide'><img src={brand3} alt='Brand 3' className='brand-image'/></SwiperSlide>
-            <SwiperSlide className='brand-slide'><img src={brand4} alt='Brand 4' className='brand-image'/></SwiperSlide>
-            <SwiperSlide className='brand-slide'><img src={brand5} alt='Brand 5' className='brand-image'/></SwiperSlide>
-            <SwiperSlide className='brand-slide'><img src={brand6} alt='Brand 6' className='brand-image'/></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand1} alt='Brand 1' className='brand-image' /></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand2} alt='Brand 2' className='brand-image' /></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand3} alt='Brand 3' className='brand-image' /></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand4} alt='Brand 4' className='brand-image' /></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand5} alt='Brand 5' className='brand-image' /></SwiperSlide>
+            <SwiperSlide className='brand-slide'><img src={brand6} alt='Brand 6' className='brand-image' /></SwiperSlide>
           </Swiper>
         </Col>
       </Row>

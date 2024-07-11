@@ -7,14 +7,13 @@ import AdminProductCard from '../../components/AdminProductCard/AdminProductCard
 const AllProducts = () => {
     const [openUploadProduct, setOpenUploadProduct] = useState(false)
     const [allProduct, setAllProduct] = useState([])
-
     const fetchAllProduct = async () => {
         const response = await fetch(SummaryApi.allProduct.url)
         const dataResponse = await response.json()
         setAllProduct(dataResponse?.data || [])
     }
     useEffect(() => {
-        fetchAllProduct()
+        fetchAllProduct();
     }, [])
 
     return (

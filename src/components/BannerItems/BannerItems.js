@@ -11,7 +11,7 @@ const BannerItems = () => {
     <div className='container mx-auto m-4'>
       <Row gutter={[16, 16]}>
         <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={8}>
-          <img src={banner1} alt='' className="w-full transition-transform duration-300 hover:scale-105" />
+          <img src={banner1} alt='' className="w-full h-full transition-transform duration-300 hover:scale-105" />
         </Col>
         <Col xxl={16} xl={16} lg={16} md={16} sm={16} xs={16}>
           <Row gutter={[16, 16]}>

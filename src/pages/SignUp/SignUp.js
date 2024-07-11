@@ -66,8 +66,7 @@ const SignUp = () => {
         <div className='mx-auto container p-4'>
 
           <div className='bg-white p-4 w-full max-w-md mx-auto'>
-            <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
-              <div>
+            <div className='w-20 h-20 mx-auto text-center'>
                 <Avatar
                   size={{
                     xs: 24,
@@ -79,7 +78,6 @@ const SignUp = () => {
                   }}
                   icon={<RxAvatar color='pink' className='bg-pink-600 w-full h-full ' />}
                 />
-              </div>
             </div>
             <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
               <div className='grid'>

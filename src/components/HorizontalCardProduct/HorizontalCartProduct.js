@@ -13,15 +13,30 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './Horizonta.scss'
 import hoa from '../../assest/assest/hoq (1).webp'
+import SummaryApi from '../../common/index.js'
+import { toast } from 'react-toastify'
+import { FaHeart } from "react-icons/fa";
 const HorizontalCartProduct = ({ category, heading }) => {
   const [data, setData] = useState([])
   // const scrollElement = useRef()
-  const { fetchUserAddToCart } = useContext(Context)
-
+  const { fetchUserAddToCart, fetchUserFavorite } = useContext(Context)
+  const [user, setUser] = useState("")
+  const fetchUserDetails = async () => {
+    const dataResponsive = await fetch(SummaryApi.current_user.url, {
+      method: SummaryApi.current_user.method,
+      credentials: "include"
+    })
+    const dataApi = await dataResponsive.json()
+    // console.log("id usdwqe", dataApi.data._id);
+    setUser(dataApi.data._id)
+  }
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id)
     fetchUserAddToCart()
   }
+  useEffect(() => {
+    fetchUserDetails();
+  }, [])
   const fetchData = async () => {
     const categoryProduct = await fetchCategoryWiseProduct(category)
     setData(categoryProduct?.data)
@@ -29,6 +44,31 @@ const HorizontalCartProduct = ({ category, heading }) => {
   useEffect(() => {
     fetchData()
   }, [])
+  const handleLike = async (e, id) => {
+    e?.stopPropagation()
+    e?.preventDefault()
+    const response = await fetch(SummaryApi.favoriteProduct.url, {
+      method: SummaryApi.favoriteProduct.method,
+      credentials: 'include',
+      headers: {
+        "content-type": 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          productId: id,
+          userId: user
+        }
+      )
+    })
+    fetchUserFavorite()
+    const responseData = await response.json()
+    if (responseData.success) {
+      toast.success(responseData.message)
+    }
+    if (responseData.error) {
+      toast.error(responseData.message)
+    }
+  }
   return (
     <div className='container mx-auto px-4 my-8' id='products'>
       <h2 className='text-3xl text-pink-400 py-6 flex items-center justify-center'>{heading}
@@ -51,11 +91,11 @@ const HorizontalCartProduct = ({ category, heading }) => {
             <FaAngleRight />
           </div>
           {data.map((item, index) => (
-            <SwiperSlide key={index} className='w-full max-w-xs'>
+            <SwiperSlide key={index} className='w-full max-w-xs' onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <Link
                 to={'/product/' + item?._id}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className='block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300'
+
+                className='block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 relative'
               >
                 <div className='product-image-container bg-slate-200 h-36 p-4 flex items-center justify-center'>
                   <img
@@ -83,6 +123,13 @@ const HorizontalCartProduct = ({ category, heading }) => {
                   >
                     Add to Cart
                   </button>
+                  <button
+                    className='mt-2 text-sm bg-transparent  text-white px-2 py-2 rounded-full transition-colors flex items-center justify-center absolute right-2 top-1'
+                    onClick={(e) => handleLike(e, item?._id)}
+                  >
+                    <FaHeart className='text-white h-6 w-6 fill-current hover:text-pink-600' />
+                  </button>
+
                 </div>
               </Link>
             </SwiperSlide>

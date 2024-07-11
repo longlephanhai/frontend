@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from '../../assest/assest/logoupdate.webp';
 import { GrSearch } from "react-icons/gr";
 import { FaCircleUser } from "react-icons/fa6";
@@ -11,7 +12,9 @@ import { toast } from 'react-toastify';
 import { setUserDetails } from '../../store/userSlice';
 import ROLE from '../../common/role';
 import Context from '../../context';
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaHeart } from "react-icons/fa";
+import { Drawer } from 'antd';
+import logomini from '../../assest/assest/logomini.webp'
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
@@ -49,16 +52,83 @@ const Header = () => {
       navigate('/search');
     }
   };
-
   const token = localStorage.getItem('token');
-
+  const [open, setOpen] = useState(false);
+  const showDrawer = async () => {
+    setOpen(true);
+    const response = await fetch(SummaryApi.listFavorite.url, {
+      method: SummaryApi.listFavorite.method,
+      credentials: 'include',
+      headers: {
+        "content-type": 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          userId: userId
+        }
+      )
+    })
+    const responseData = await response.json()
+    setData(responseData.data)
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+  const [userId, setUserId] = useState("")
+  const fetchUserDetails = async () => {
+    const dataResponsive = await fetch(SummaryApi.current_user.url, {
+      method: SummaryApi.current_user.method,
+      credentials: "include"
+    })
+    const dataApi = await dataResponsive.json()
+    setUserId(dataApi.data._id)
+  }
+  const [data, setData] = useState([])
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
+  console.log(data);
+  const handleDelete = async (id) => {
+    const dataResponsive = await fetch(SummaryApi.deleteFavoriteProduct.url, {
+      method: SummaryApi.deleteFavoriteProduct.method,
+      credentials: "include",
+      headers: {
+        "content-type": 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          productId: id
+        }
+      )
+    })
+    const dataApi = await dataResponsive.json()
+    if (dataApi.success) {
+      showDrawer();
+      context.fetchUserFavorite()
+    }
+  }
   return (
     <>
       <header className='h-16 shadow-md bg-white fixed w-full z-40'>
-        <div className='h-full container mx-auto flex items-center px-4 justify-between'>
+        <div className='h-full container mx-auto flex items-center px-3 justify-between'>
           <div>
             <Link to={'/'}>
-              <img src={logo} alt='logo' width={90} height={50} />
+              <img
+                src={logo}
+                alt='logo'
+                width={90}
+                height={50}
+                className='hidden md:block'
+              />
+            </Link>
+            <Link to={'/'}>
+              <img
+                src={logomini}
+                alt='logomini'
+                width={50}
+                height={10}
+                className='block md:hidden'
+              />
             </Link>
           </div>
 
@@ -82,7 +152,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className='flex items-center gap-7'>
+          <div className='flex items-center gap-4 md:gap-7'>
             <div className='relative flex justify-center'>
               {user?._id && (
                 <div className='text-3xl cursor-pointer relative flex justify-center' onClick={() => setMenuDisplay(prev => !prev)}>
@@ -100,7 +170,7 @@ const Header = () => {
                       <Link to={'/admin-panel/dashboard'} className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)}>Admin panel</Link>
                     )}
                     <div>
-                      <Link to='https://social-henna-seven.vercel.app/' className='whitespace-nowrap block hover:bg-slate-100 p-2'>Social Page</Link>
+                      <Link to='/myorder' className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)} > My Orders</Link>
                     </div>
                   </nav>
                 </div>
@@ -115,6 +185,41 @@ const Header = () => {
               </Link>
             )}
             <div>
+              <button onClick={showDrawer} className='text-2xl relative flex items-center' >
+                <FaHeart />
+                <div className='bg-pink-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
+                  <p className='text-sm'>{context?.count}</p>
+                </div>
+              </button>
+              <Drawer title="Favorite Product" onClose={onClose} open={open}>
+                {data.map((item, index) => (
+                  <div key={index} className="border-b border-gray-200 pb-4 mb-4 relative">
+                    <Link to={`/product/${item.productId._id}`} className="flex items-center space-x-4 p-4">
+                      <img src={item.productId.productImage[0]} alt='' className="w-24 h-24 object-cover rounded-lg" />
+                      <div className="flex-1">
+                        <p className="text-lg font-bold">{item.productId.productName}</p>
+                        <p className="text-sm text-gray-500">{item.productId.brandName}</p>
+                        <p className="text-sm text-gray-500">{item.productId.category}</p>
+                        <div className="flex justify-between mt-2">
+                          <p className="text-gray-700">Price: {item.productId.price}</p>
+                          <p className="text-red-500 font-bold">Selling Price: {item.productId.sellingPrice}</p>
+                        </div>
+                      </div>
+                    </Link>
+                    <div className="flex justify-end pr-4">
+                      <button
+                        className="text-slate-400 px-3 py-1 rounded-lg transition-colors absolute  top-1"
+                        onClick={() => handleDelete(item._id)}
+                      >
+                        X
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </Drawer>
+
+            </div>
+            <div>
               {user?._id || token ? (
                 <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-pink-600 hover:bg-pink-700'>Logout</button>
               ) : (
@@ -127,22 +232,24 @@ const Header = () => {
               <FaBars />
             </button>
           </div>
-        </div>
+        </div >
 
         {/* Dropdown Menu for Small Screens */}
-        {dropdownOpen && (
-          <div className='lg:hidden bg-white shadow-md'>
-            <nav className='flex flex-col p-4 space-y-2 items-center'>
-              <a href='#' className='text-pink-600 hover:text-pink-900'>Home</a>
-              <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
-              <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
-              <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
-              <a href='https://longlephanhai.github.io/About-us/' className='text-pink-600 hover:text-pink-900'>About Us</a>
-              <a href='https://social-henna-seven.vercel.app/' className='text-pink-600 hover:text-pink-900'>Social Page</a>
-            </nav>
-          </div>
-        )}
-      </header>
+        {
+          dropdownOpen && (
+            <div className='lg:hidden bg-white shadow-md'>
+              <nav className='flex flex-col p-4 space-y-2 items-center'>
+                <a href='#' className='text-pink-600 hover:text-pink-900'>Home</a>
+                <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
+                <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
+                <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
+                <a href='https://longlephanhai.github.io/About-us/' className='text-pink-600 hover:text-pink-900'>About Us</a>
+                <a href='https://social-henna-seven.vercel.app/' className='text-pink-600 hover:text-pink-900'>Social Page</a>
+              </nav>
+            </div>
+          )
+        }
+      </header >
     </>
   );
 };

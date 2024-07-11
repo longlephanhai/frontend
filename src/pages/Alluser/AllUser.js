@@ -138,7 +138,7 @@ const AllUser = () => {
         dataSource={allUser}
         rowKey={(record) => record._id} // Assuming each record has a unique identifier '_id'
         bordered
-        pagination={{ pageSize: 5 }} // Set the number of rows per page
+        pagination={{ pageSize: 10 }} // Set the number of rows per page
       />
       {openUpdateRole && (
         <ChangeUserRole

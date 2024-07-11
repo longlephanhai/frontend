@@ -23,6 +23,7 @@ function App() {
   }, [])
   const dispatch = useDispatch()
   const [cartProduct, setCartProduct] = useState(0)
+  const [count,setCount]=useState(0);
   const fetchUserDetails = async () => {
     const dataResponsive = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
@@ -32,29 +33,39 @@ function App() {
     if (dataApi.success) {
       dispatch(setUserDetails(dataApi.data))
     }
-
   }
   const fetchUserAddToCart = async () => {
     const dataResponse = await fetch(SummaryApi.addToCartProductCount.url, {
       method: SummaryApi.addToCartProductCount.method,
       credentials: 'include'
     })
-
     const dataApi = await dataResponse.json()
     setCartProduct(dataApi?.data?.count)
+  }
+  const fetchUserFavorite = async () => {
+    const dataResponse = await fetch(SummaryApi.countFavorite.url, {
+      method: SummaryApi.countFavorite.method,
+      credentials: 'include'
+    })
+    const dataApi = await dataResponse.json()
+    setCount(dataApi?.data?.count)
   }
   useEffect(() => {
     // user Details
     fetchUserDetails()
     //user cart product
     fetchUserAddToCart()
+    // user favorite
+    fetchUserFavorite()
   }, [])
   return (
     <>
       <Context.Provider value={{
         fetchUserDetails, //user detail fetch
         cartProduct,
-        fetchUserAddToCart
+        fetchUserAddToCart,
+        fetchUserFavorite,
+        count
       }}>
         <ToastContainer position='top-center' />
         {

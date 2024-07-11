@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios"
 import SummaryApi from '../../common'
-// import { getCookie } from '../../helpers/cookie'
+import './MyOrder.scss'
+import box from '../../assest/assest/parcel_icon.png'
+import { useNavigate } from 'react-router-dom';
 const MyOrder = () => {
-  // const url = "http://localhost:8080"
-  // const token = getCookie("token")
-  // console.log("token+", token);
   const [data, setData] = useState([]);
   const fetchOrders = async () => {
-
-    // const response = await axios.post(url + "/api/userorders", {}, { headers: {token }});
     const response = await fetch(SummaryApi.userOrder.url, {
       method: SummaryApi.userOrder.method,
       credentials: 'include',
@@ -17,39 +13,41 @@ const MyOrder = () => {
         "content-type": 'application/json'
       },
     })
-    // console.log(response)
     const responseData = await response.json()
     console.log(responseData);
     if (responseData.success) {
       setData(responseData.data)
     }
-    // setData(response.data.data);
   }
-
   useEffect(() => {
     fetchOrders();
   }, [])
+  const navigate = useNavigate()
+  const handleClick = async (item, _id) => {
+    navigate(`/orderdetail/${_id}`);
+  }
   return (
     <div>
       <div className='my-orders'>
-        <h2>MyOrders</h2>
-        <div className='container'>
+        <div className='container mx-auto'>
           {data.map((order, index) => {
             return (
               <div key={index} className='my-orders-orders'>
-                {/* <img src={assets.parcel_icon} alt='' /> */}
+                <img src={box} alt='' />
                 <p>{order.items.map((item, index) => {
                   if (index === order.items.length - 1) {
-                    return item.name + " x " + item.quantity
+                    return item.productName + " x " + item.quantity
                   }
                   else {
-                    return item.name + " x " + item.quantity + ", "
+                    return item.productName + " x " + item.quantity + ", "
                   }
                 })}</p>
-                <p>${order.amount}.00</p>
+                <p>${order.amount}</p>
                 <p>Items:{order.items.length}</p>
                 <p><span>&#x25cf;</span><b>{order.status}</b></p>
-                <button >Track order</button>
+                <button onClick={() => handleClick(order.items, order._id)} >
+                  Track orders
+                </button>
               </div>
             )
           })}

@@ -5,6 +5,7 @@ import { UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/
 import { FaChartLine, FaCalendar, FaUsers } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
 import { useSelector } from 'react-redux'
+import { FaBoxOpen } from "react-icons/fa6";
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import ROLE from '../../common/role'
 const AdminPanel = () => {
@@ -57,6 +58,9 @@ const AdminPanel = () => {
           </Menu.Item>
           <Menu.Item key="4" icon={<AiOutlineProduct />}>
             <Link to="all-products">All Products</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<FaBoxOpen/>}>
+            <Link to="orderlist">Orders List</Link>
           </Menu.Item>
         </Menu>
       </Sider>

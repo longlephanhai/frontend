@@ -16,6 +16,8 @@ import Verify from "../pages/Verify/Verify";
 import MyOrder from "../pages/MyOrder/MyOrder";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import PageCalendar from "../pages/Calendar/PageCalendar";
+import OrderList from "../pages/OrderList/OrderList";
+import OrderDetail from "../pages/OrderDetail/OrderDetail";
 // import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
@@ -60,12 +62,16 @@ export const router = createBrowserRouter([
         element: <SearchProduct />
       },
       {
-        path: "verify",
+        path: "/verify",
         element: <Verify />
       },
       {
         path: "myorder",
         element: <MyOrder />
+      },
+      {
+        path:"orderdetail/:id",
+        element:<OrderDetail/>
       },
       {
         path: "/admin-panel",
@@ -87,6 +93,10 @@ export const router = createBrowserRouter([
             path: 'calendar',
             element: <PageCalendar />
           },
+          {
+            path:'orderlist',
+            element:<OrderList/>
+          }
         ]
       },
     ]

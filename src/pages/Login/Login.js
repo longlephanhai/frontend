@@ -65,7 +65,7 @@ const Login = () => {
     <section id='login' className='flex justify-center items-center min-h-screen'>
       <div className='container p-4'>
         <div className='bg-white p-4 max-w-md mx-auto rounded-md shadow-md'>
-          <div className='w-20 h-20 mx-auto'>
+          <div className='w-20 h-20 mx-auto text-center'>
             <Avatar
               size={{
                 xs: 24,

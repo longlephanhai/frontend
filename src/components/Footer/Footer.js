@@ -8,7 +8,7 @@ import { RiMapPin2Fill } from "react-icons/ri";
 import { PiMapPinAreaFill } from "react-icons/pi";
 import './Footer.css';
 import logo from '../../assest/assest/logoupdate.webp';
-
+import { IoMdArrowDropup,IoMdArrowDropdown  } from "react-icons/io";
 const Footer = () => {
   const { Search } = Input;
   const suffix = (
@@ -48,7 +48,7 @@ const Footer = () => {
             <div className='text-white text-3xl'>
               <MdMarkEmailRead />
             </div>
-            <div className='text-2xl'>
+            <div className='text-sm md:text-md  lg:text-lg xl:text-xl text-white'>
               Receive beauty newsletters from us
             </div>
           </div>
@@ -66,7 +66,7 @@ const Footer = () => {
         <div>
           <button
             className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
-            // onClick={() => toggleDropdown('address')}
+          // onClick={() => toggleDropdown('address')}
           >
             Address
           </button>
@@ -92,10 +92,12 @@ const Footer = () => {
         </div>
         <div>
           <button
-            className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='flex items-center w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
             onClick={() => toggleDropdown('customerSupport')}
           >
             Customer Support
+            <IoMdArrowDropup className={`ml-2 ${isOpen.customerSupport ? 'hidden' : 'block'} block md:hidden`} />
+            <IoMdArrowDropdown className={`ml-2 ${isOpen.customerSupport ? 'block' : 'hidden'} block md:hidden`} />
           </button>
           <ul className={`flex flex-col gap-3 overflow-hidden transition-all duration-200 ${isOpen.customerSupport ? 'max-h-screen' : 'max-h-0'} md:max-h-none`}>
             <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Home Page</li>
@@ -109,10 +111,12 @@ const Footer = () => {
         </div>
         <div>
           <button
-            className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='flex items-center w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
             onClick={() => toggleDropdown('policy')}
           >
             Policy
+            <IoMdArrowDropup className={`ml-2 ${isOpen.policy ? 'hidden' : 'block'} block md:hidden`} />
+            <IoMdArrowDropdown className={`ml-2 ${isOpen.policy ? 'block' : 'hidden'} block md:hidden`} />
           </button>
           <ul className={`flex flex-col gap-3 overflow-hidden transition-all duration-200 ${isOpen.policy ? 'max-h-screen' : 'max-h-0'} md:max-h-none`}>
             <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Home Page</li>
@@ -127,7 +131,6 @@ const Footer = () => {
         <div>
           <button
             className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
-            // onClick={() => toggleDropdown('openingTimes')}
           >
             Opening Times
           </button>

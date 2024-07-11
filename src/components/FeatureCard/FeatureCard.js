@@ -15,7 +15,7 @@ const features = [
 
 const FeatureArea = () => {
   return (
-    <div className="feature-area feature-about-area  m-0 bg-[#EC4899]">
+    <div className="feature-area feature-about-area  m-0 bg-[#F96698]">
       <div className="container-fluid mx-auto max-w-[1200px] ">
         <div className="flex flex-wrap">
           {features.map((feature, index) => (
