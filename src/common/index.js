@@ -1,5 +1,5 @@
-// const backendDomin = "https://backend-jyob.onrender.com"
-const backendDomin = "http://localhost:8080"
+const backendDomin = "https://backend-jyob.onrender.com"
+// const backendDomin = "http://localhost:8080"
 const SummaryApi = {
     signUp: {
         url: `${backendDomin}/api/signup`,
