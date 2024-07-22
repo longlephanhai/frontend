@@ -1,5 +1,5 @@
-const backendDomin = "https://backend-jyob.onrender.com"
-// const backendDomin = "http://localhost:8080"
+// const backendDomin = "https://backend-jyob.onrender.com"
+const backendDomin = "http://localhost:8080"
 const SummaryApi = {
     signUp: {
         url: `${backendDomin}/api/signup`,
@@ -131,6 +131,14 @@ const SummaryApi = {
     },
     deleteFavoriteProduct:{
         url:`${backendDomin}/api/deletefavorite`,
+        method:'post'
+    },
+    forgotPassWord:{
+        url:`${backendDomin}/api/forgot-password`,
+        method:'post'
+    },
+    resetPassword:{
+        url:`${backendDomin}/api/reset-password`,
         method:'post'
     }
 }

@@ -18,6 +18,8 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import PageCalendar from "../pages/Calendar/PageCalendar";
 import OrderList from "../pages/OrderList/OrderList";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
+import ConfirmEmail from "../pages/Confirm-Email/ConfirmEmail";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
 // import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
@@ -38,8 +40,16 @@ export const router = createBrowserRouter([
         element: <ForgotPassword />
       },
       {
+        path:"/reset-password/:token",
+        element:<ResetPassword/>
+      },
+      {
         path: "/sign-up",
         element: <SignUp />
+      },
+      {
+        path:"/confirm-email",
+        element:<ConfirmEmail/>
       },
       {
         path: '/product-category',

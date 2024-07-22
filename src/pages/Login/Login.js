@@ -68,7 +68,7 @@ const Login = () => {
           <div className='w-20 h-20 mx-auto text-center'>
             <Avatar
               size={{
-                xs: 24,
+                xs: 64,
                 sm: 32,
                 md: 40,
                 lg: 64,

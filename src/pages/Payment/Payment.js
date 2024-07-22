@@ -134,7 +134,7 @@ const Payment = () => {
   };
   return (
       <Form onFinish={placeOrder} className='place-order min-h-[100vh]'>
-        <Row gutter={24} style={{ backgroundColor: 'white' }}>
+        <Row gutter={24} style={{ backgroundColor: 'white' }} className='md:h-[100vh]'>
           <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
             <Card title="Delivery Information" bordered={false} style={{ height: '100%', border: 'none' }}>
               <Row gutter={16}>

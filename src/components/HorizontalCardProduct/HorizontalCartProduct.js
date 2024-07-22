@@ -28,7 +28,7 @@ const HorizontalCartProduct = ({ category, heading }) => {
     })
     const dataApi = await dataResponsive.json()
     // console.log("id usdwqe", dataApi.data._id);
-    setUser(dataApi.data._id)
+    setUser(dataApi?.data?._id)
   }
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id)
@@ -43,6 +43,7 @@ const HorizontalCartProduct = ({ category, heading }) => {
   }
   useEffect(() => {
     fetchData()
+    fetchUserFavorite()
   }, [])
   const handleLike = async (e, id) => {
     e?.stopPropagation()
@@ -60,7 +61,6 @@ const HorizontalCartProduct = ({ category, heading }) => {
         }
       )
     })
-    fetchUserFavorite()
     const responseData = await response.json()
     if (responseData.success) {
       toast.success(responseData.message)
@@ -68,6 +68,7 @@ const HorizontalCartProduct = ({ category, heading }) => {
     if (responseData.error) {
       toast.error(responseData.message)
     }
+    fetchUserFavorite()
   }
   return (
     <div className='container mx-auto px-4 my-8' id='products'>

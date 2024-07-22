@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import imageTobass64 from '../../helpers/imageTobass64.js/imageTobass64';
 import SummaryApi from '../../common';
 import { toast } from 'react-toastify';
 import { RxAvatar } from "react-icons/rx";
@@ -40,7 +39,7 @@ const SignUp = () => {
       const responseData = await dataResponse.json()
       if (responseData.success) {
         toast.success(responseData.message);
-        navigate('/login')
+        navigate('/confirm-email')
       }
       if (responseData.error) {
         toast.error(responseData.message);
@@ -48,16 +47,6 @@ const SignUp = () => {
     } else {
       console.log("Please check")
     }
-  }
-  const handleUploadPic = async (e) => {
-    const file = e.target.files[0];
-    const imagePic = await imageTobass64(file)
-    setData((preve) => {
-      return {
-        ...preve,
-        profilePic: imagePic
-      }
-    })
   }
   console.log(data)
   return (
@@ -69,7 +58,7 @@ const SignUp = () => {
             <div className='w-20 h-20 mx-auto text-center'>
                 <Avatar
                   size={{
-                    xs: 24,
+                    xs: 64,
                     sm: 32,
                     md: 40,
                     lg: 64,
