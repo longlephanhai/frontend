@@ -6,6 +6,9 @@ import SummaryApi from '../../common';
 import { toast } from 'react-toastify';
 import { RxAvatar } from "react-icons/rx";
 import { Avatar } from 'antd';
+import loginIcon from '../../assest/assest/logomini.webp'
+import imageTobass64 from '../../helpers/imageTobass64.js/imageTobass64';
+import uploadImage from '../../helpers/uploadImage/uploadImage';
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -23,6 +26,16 @@ const SignUp = () => {
       return {
         ...preve,
         [name]: value
+      }
+    })
+  }
+  const handleUploadPic = async (e) => {
+    const file = e.target.files[0];
+    const imagePic = await uploadImage(file)
+    setData((preve) => {
+      return {
+        ...preve,
+        profilePic: imagePic.url
       }
     })
   }
@@ -55,8 +68,10 @@ const SignUp = () => {
         <div className='mx-auto container p-4'>
 
           <div className='bg-white p-4 w-full max-w-md mx-auto'>
-            <div className='w-20 h-20 mx-auto text-center'>
-                <Avatar
+            <div className='w-20 h-20 mx-auto text-center relative overflow-hidden rounded-full'>
+              <div>
+                <img src={data.profilePic || loginIcon} alt='' />
+                {/* <Avatar
                   size={{
                     xs: 64,
                     sm: 32,
@@ -66,7 +81,20 @@ const SignUp = () => {
                     xxl: 100,
                   }}
                   icon={<RxAvatar color='pink' className='bg-pink-600 w-full h-full ' />}
-                />
+                /> */}
+              </div>
+              <form>
+                <label>
+                  <div className='text-xs bg-opacity-80 bg-slate-200 pb-3 pt-2 text-center absolute bottom-0 w-full cursor-pointer'>
+                    Upload Image
+                  </div>
+                  <input
+                    onChange={handleUploadPic}
+                    type='file'
+                    accept='image/*'
+                    className='hidden' />
+                </label>
+              </form>
             </div>
             <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
               <div className='grid'>

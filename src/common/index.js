@@ -1,5 +1,5 @@
 const backendDomin = "https://backend-jyob.onrender.com"
-// const backendDomin = "http://localhost:8080"
+// export const backendDomin = "http://localhost:8080"
 const SummaryApi = {
     signUp: {
         url: `${backendDomin}/api/signup`,
@@ -113,33 +113,81 @@ const SummaryApi = {
         url: `${backendDomin}/api/orderitem`,
         method: 'post'
     },
-    getItemOrder:{
-        url:`${backendDomin}/api/order-detail`,
-        method:'post'
+    getItemOrder: {
+        url: `${backendDomin}/api/order-detail`,
+        method: 'post'
     },
-    favoriteProduct:{
-        url:`${backendDomin}/api/favorite`,
-        method:'post'
+    favoriteProduct: {
+        url: `${backendDomin}/api/favorite`,
+        method: 'post'
     },
-    listFavorite:{
-        url:`${backendDomin}/api/listfavorite`,
-        method:'post'
+    listFavorite: {
+        url: `${backendDomin}/api/listfavorite`,
+        method: 'post'
     },
-    countFavorite:{
-        url:`${backendDomin}/api/count-favorite`,
+    countFavorite: {
+        url: `${backendDomin}/api/count-favorite`,
+        method: 'get'
+    },
+    deleteFavoriteProduct: {
+        url: `${backendDomin}/api/deletefavorite`,
+        method: 'post'
+    },
+    forgotPassWord: {
+        url: `${backendDomin}/api/forgot-password`,
+        method: 'post'
+    },
+    resetPassword: {
+        url: `${backendDomin}/api/reset-password`,
+        method: 'post'
+    },
+    limitUser: {
+        url: `${backendDomin}/api/limit-user`,
+        method: 'get'
+    },
+    post: {
+        url: `${backendDomin}/api/post`,
+        method: 'post'
+    },
+    getPost: {
+        url: `${backendDomin}/api/get-post`,
+        method: 'get',
+    },
+    getPostById: {
+        url: `${backendDomin}/api/getpostbyid`,
+        method: 'post'
+    },
+    postList: {
+        url: `${backendDomin}/api/post-list`,
+        method: 'get'
+    },
+    changeAccept: {
+        url: `${backendDomin}/api/change-accept`,
+        method: 'patch'
+    },
+    postModal: {
+        url: `${backendDomin}/api/post-modal`,
+        method: 'post'
+    },
+    likePost: {
+        url: `${backendDomin}/api/like-post`,
+        method: 'post'
+    },
+    sendMessage: {
+        url: `${backendDomin}/api/send-message`,
+        method: 'post'
+    },
+    getMessageById: {
+        url: `${backendDomin}/api/getmessagebyId`,
+        method: 'post'
+    },
+    listMessage: {
+        url: `${backendDomin}/api/list-message`,
+        method: 'get'
+    },
+    getAdmin:{
+        url:`${backendDomin}/api/get-admin`,
         method:'get'
-    },
-    deleteFavoriteProduct:{
-        url:`${backendDomin}/api/deletefavorite`,
-        method:'post'
-    },
-    forgotPassWord:{
-        url:`${backendDomin}/api/forgot-password`,
-        method:'post'
-    },
-    resetPassword:{
-        url:`${backendDomin}/api/reset-password`,
-        method:'post'
     }
 }
 

@@ -20,6 +20,11 @@ import OrderList from "../pages/OrderList/OrderList";
 import OrderDetail from "../pages/OrderDetail/OrderDetail";
 import ConfirmEmail from "../pages/Confirm-Email/ConfirmEmail";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import Socical from "../pages/Social/Socical";
+import Profile from "../pages/Profile/Profile";
+import PostList from "../pages/PostList/PostList";
+import Chat from "../pages/Chat/Chat";
+import ListMessage from "../pages/ListMessage/ListMessage";
 // import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
@@ -84,6 +89,18 @@ export const router = createBrowserRouter([
         element:<OrderDetail/>
       },
       {
+        path:"social",
+        element:<Socical/>
+      },
+      {
+        path:"profile/:id",
+        element:<Profile/>
+      },
+      {
+        path:"chat",
+        element:<Chat/>
+      },
+      {
         path: "/admin-panel",
         element: <AdminPanel />,
         children: [
@@ -106,6 +123,14 @@ export const router = createBrowserRouter([
           {
             path:'orderlist',
             element:<OrderList/>
+          },
+          {
+            path:'post-list',
+            element:<PostList/>
+          },
+          {
+            path:'list-message',
+            element:<ListMessage/>
           }
         ]
       },

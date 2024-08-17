@@ -23,7 +23,7 @@ function App() {
   }, [])
   const dispatch = useDispatch()
   const [cartProduct, setCartProduct] = useState(0)
-  const [count,setCount]=useState(0);
+  const [count, setCount] = useState(0);
   const fetchUserDetails = async () => {
     const dataResponsive = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
@@ -77,6 +77,17 @@ function App() {
               <main className='min-h-[calc(100vh)] pt-16'>
                 <Outlet />
                 <FloatButton.BackTop icon={<ToTopOutlined />} className='mb-8' />
+                {/* <FloatButton.Group
+                  className='-mb-4 text-center'
+                  trigger="hover"
+                  type="primary"
+                  style={{
+                    insetInlineEnd: 80,
+                  }}
+                  icon={<AiOutlineMessage className='' style={{ fontSize: '24px' }} />}
+                >
+                  <FloatButton icon={<CommentOutlined />} onClick={handleOnClick} />
+                </FloatButton.Group> */}
               </main>
               <Footer />
             </>

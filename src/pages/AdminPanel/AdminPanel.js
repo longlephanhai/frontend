@@ -7,7 +7,9 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { useSelector } from 'react-redux'
 import { FaBoxOpen } from "react-icons/fa6";
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { FaImage } from "react-icons/fa";
 import ROLE from '../../common/role'
+import { AiFillMessage } from "react-icons/ai";
 const AdminPanel = () => {
   const { Sider, Content } = Layout;
   const user = useSelector(state => state?.user?.user)
@@ -36,8 +38,12 @@ const AdminPanel = () => {
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           </Button>
         </div>
-        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <Avatar size={collapsed ? 32 : 64} icon={<UserOutlined />} />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px' }}>
+          {user?.profilePic ? (
+            <img src={user?.profilePic} alt='profile' className='w-20 h-20 rounded-full object-cover' />
+          ) : (
+            <Avatar size={collapsed ? 32 : 64} icon={<UserOutlined />} />
+          )}
           {!collapsed && (
             <>
               <p style={{ fontWeight: 'bold', marginTop: '10px', marginBottom: '0' }}>{user?.name}</p>
@@ -59,8 +65,14 @@ const AdminPanel = () => {
           <Menu.Item key="4" icon={<AiOutlineProduct />}>
             <Link to="all-products">All Products</Link>
           </Menu.Item>
-          <Menu.Item key="5" icon={<FaBoxOpen/>}>
+          <Menu.Item key="5" icon={<FaBoxOpen />}>
             <Link to="orderlist">Orders List</Link>
+          </Menu.Item>
+          <Menu.Item key="6" icon={<FaImage />}>
+            <Link to="post-list">Posts</Link>
+          </Menu.Item>
+          <Menu.Item key="7" icon={<AiFillMessage />}>
+            <Link to="list-message">Message</Link>
           </Menu.Item>
         </Menu>
       </Sider>

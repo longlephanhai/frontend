@@ -156,8 +156,8 @@ const Header = () => {
             <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
             <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
             <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
-            <a href='https://longlephanhai.github.io/About-us/' className='text-pink-600 hover:text-pink-900'>About Us</a>
-            <a href='https://social-henna-seven.vercel.app/' className='text-pink-600 hover:text-pink-900'>Social Page</a>
+            <Link to='/chat' className='text-pink-600 hover:text-pink-900'>Chat</Link>
+            <Link to={"/social"} className='text-pink-600 hover:text-pink-900'>Social Page</Link>
           </nav>
 
           <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow-md pl-1'>
@@ -172,7 +172,7 @@ const Header = () => {
               {user?._id && (
                 <div className='text-3xl cursor-pointer relative flex justify-center' onClick={() => setMenuDisplay(prev => !prev)}>
                   {user?.profilePic ? (
-                    <img src={user?.profilePic} alt='profile' className='w-10 h-10 rounded-full' />
+                    <img src={user?.profilePic} alt='profile' className='w-10 h-10 rounded-full object-cover' />
                   ) : (
                     <FaCircleUser />
                   )}
@@ -261,8 +261,8 @@ const Header = () => {
                 <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
                 <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
                 <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
-                <a href='https://longlephanhai.github.io/About-us/' className='text-pink-600 hover:text-pink-900'>About Us</a>
-                <a href='https://social-henna-seven.vercel.app/' className='text-pink-600 hover:text-pink-900'>Social Page</a>
+                <Link to='/chat' className='text-pink-600 hover:text-pink-900'>Chat</Link>
+                <Link to='/social' className='text-pink-600 hover:text-pink-900'>Social Page</Link>
               </nav>
             </div>
           )
