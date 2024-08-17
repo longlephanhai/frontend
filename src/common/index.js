@@ -1,4 +1,4 @@
-const backendDomin = "https://backend-jyob.onrender.com"
+export const backendDomin = "https://backend-jyob.onrender.com"
 // export const backendDomin = "http://localhost:8080"
 const SummaryApi = {
     signUp: {
