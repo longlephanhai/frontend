@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CategoryList from '../../components/CategoryList/CategoryList'
 import BannerProduct from '../../components/BannerProduct/BannerProduct'
 import HorizontalCartProduct from '../../components/HorizontalCardProduct/HorizontalCartProduct'
-import ChatBot from 'react-simple-chatbot'
+// import ChatBot from 'react-simple-chatbot'
 import Brand from '../../components/Brand/Brand'
 import Countdown from '../../components/CountDown/CountDown'
 import BannerItems from '../../components/BannerItems/BannerItems'
@@ -119,20 +119,20 @@ const Home = () => {
       {/* <ProductArea/> */}
 
       {/* Nút hình tròn để mở chatbot */}
-      <button
+      {/* <button
         onClick={() => setShowChatBot(!showChatBot)}
         className="fixed bottom-4 right-4 w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 focus:outline-none"
         aria-label="Open ChatBot"
       >
         💬
-      </button>
+      </button> */}
 
       {/* Hiển thị chatbot khi showChatBot là true */}
-      {showChatBot && (
+      {/* {showChatBot && (
         <div className="fixed bottom-20 mb-36 mr-16 right-4 w-80 h-96 bg-white shadow-lg z-50">
           <ChatBot steps={steps} />
         </div>
-      )}
+      )} */}
     </>
   )
 }
