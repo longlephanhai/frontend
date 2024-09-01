@@ -17,7 +17,7 @@ const FollowersCard = () => {
     fetchApi();
   }, [])
   return (
-    <div className='w-full rounded-[0.7rem] gap-4 flex flex-col text-[13px]'>
+    <div className='w-full rounded-[0.7rem] gap-4 md:flex flex-col text-[13px] hidden'>
       <h4 className='font-bold text-md'>Who is following you</h4>
       {
         data?.map((item, index) => {

@@ -78,82 +78,68 @@ const PostShare = () => {
   useEffect(() => {
     fetchData()
   }, [data])
-  console.log('data', data);
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className='flex gap-4 bg-white p-4 rounded-[1rem]'>
-          <img className='rounded-full w-[3rem] h-[3rem] object-cover' src={user?.profilePic} alt='' />
-          <div className='flex flex-col w-[90%] gap-4'>
+        <div className='flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-[1rem]'>
+          <img className='hidden sm:block rounded-full w-[3rem] h-[3rem] sm:w-[4rem] sm:h-[4rem] object-cover' src={user?.profilePic} alt='Profile' />
+          <div className='flex flex-col w-full gap-4'>
             <input
-              className='rounded-[10px] p-[10px] text-[17px] border-none outline-none bg-slate-200'
+              className='rounded-[10px] p-[10px] text-[15px] sm:text-[17px] border-none outline-none bg-slate-200 w-full'
               type='text'
               placeholder="What's happening"
               name='happen'
               onChange={handleOnchange}
               value={data?.desc}
             />
-            <div className='flex justify-around'>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer text-green-600'
-                onClick={() => imageRef.current.click()} onChange={handleOnchange}
+            <div className='flex flex-wrap justify-around'>
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-green-600'
+                onClick={() => imageRef.current.click()}
               >
-                <CiImageOn className='w-6 h-auto' />
+                <CiImageOn className='w-5 sm:w-6 h-auto' />
                 Photo
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer text-blue-600'>
-                <BiSolidCaretRightCircle className='w-6 h-auto' />
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-blue-600'>
+                <BiSolidCaretRightCircle className='w-5 sm:w-6 h-auto' />
                 Video
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer
-          text-red-600'>
-                <HiOutlineMapPin className='w-6 h-auto' />
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-red-600'>
+                <HiOutlineMapPin className='w-5 sm:w-6 h-auto' />
                 Location
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer
-          text-yellow-600'>
-                <FaRegCalendarAlt className='w-6 h-auto' />
-                Shedule
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-yellow-600'>
+                <FaRegCalendarAlt className='w-5 sm:w-6 h-auto' />
+                Schedule
               </div>
-              <button className='flex items-center border justify-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600'
-                onClick={handleSubmit}
-              >
+              <button type='submit' className='flex items-center border justify-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-8 px-[10px] sm:px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600'>
                 Share
               </button>
               <div style={{ display: 'none' }}>
                 <input type='file' name='myImage' ref={imageRef} onChange={onImageChange} accept='image/*' />
               </div>
             </div>
-            {
-              data.img && (
-                <div className='relative'>
-                  <FaX
-                    className='absolute right-4 top-2 cursor-pointer z-20'
-                    onClick={() => setData((prev) => {
-                      return {
-                        ...prev,
-                        img: null
-                      }
-                    })} />
-                  <img className='w-full max-h-[20rem] object-contain rounded-[0.5rem]' src={data?.img} alt='' />
-                </div>
-              )
-            }
+            {data.img && (
+              <div className='relative'>
+                <FaX
+                  className='absolute right-4 top-2 cursor-pointer z-20'
+                  onClick={() => setData(prev => ({ ...prev, img: null }))}
+                />
+                <img className='w-full max-h-[15rem] sm:max-h-[20rem] object-contain rounded-[0.5rem]' src={data?.img} alt='Uploaded' />
+              </div>
+            )}
           </div>
         </div>
       </form>
 
       <div className='flex flex-col gap-4 mt-4'>
-        {
-          dataPost.map((post, index) => {
-            return (
-              <div key={index}>
-                <Post data={post} id={index} />
-              </div>
-            )
-          })
-        }
+        {dataPost.map((post, index) => (
+          <div key={index}>
+            <Post data={post} id={index} />
+          </div>
+        ))}
       </div>
     </div>
+
   )
 }
 

@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import logo from '../../assest/assest/logoupdate.webp';
 import { GrSearch } from "react-icons/gr";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import SummaryApi from '../../common';
+import SummaryApi, { backendDomin } from '../../common';
 import { toast } from 'react-toastify';
 import { setUserDetails } from '../../store/userSlice';
 import ROLE from '../../common/role';
@@ -15,6 +15,7 @@ import Context from '../../context';
 import { FaBars, FaHeart } from "react-icons/fa";
 import { Drawer } from 'antd';
 import logomini from '../../assest/assest/logomini.webp'
+import io from 'socket.io-client';
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Header = () => {
   const urlSearch = new URLSearchParams(searchProduct?.search);
   const searchQry = urlSearch.getAll("q");
   const [search, setSearch] = useState(searchQry);
-
+  const socketRef = useRef(null);
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
       method: SummaryApi.logout_user.method,
@@ -36,6 +37,8 @@ const Header = () => {
     if (data.success) {
       toast.success(data.message);
       dispatch(setUserDetails(null));
+      socketRef.current = io(backendDomin);
+      navigate("/")
     }
     if (data.error) {
       toast.error(data.message);
@@ -101,7 +104,6 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
-  console.log(data);
 
   const handleDelete = async (id) => {
     const dataResponsive = await fetch(SummaryApi.deleteFavoriteProduct.url, {
@@ -122,6 +124,9 @@ const Header = () => {
       context.fetchUserFavorite()
     }
   }
+
+
+
   return (
     <>
       <header className='h-16 shadow-md bg-white fixed w-full z-40'>

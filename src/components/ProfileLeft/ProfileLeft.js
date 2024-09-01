@@ -6,9 +6,9 @@ import InfoCard from '../InfoCard/InfoCard'
 const ProfileLeft = () => {
   return (
     <div className='flex flex-col gap-4 items-center overflow-auto'>
-      <LogoSearch/>
-      <InfoCard/>
-      <FollowersCard/>
+      <LogoSearch />
+      <InfoCard />
+      <FollowersCard />
     </div>
   )
 }

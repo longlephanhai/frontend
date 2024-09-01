@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { CiImageOn } from "react-icons/ci";
 import { BiSolidCaretRightCircle } from "react-icons/bi";
 import { HiOutlineMapPin } from "react-icons/hi2";
@@ -10,12 +9,14 @@ import SummaryApi from '../../common';
 import { toast } from 'react-toastify';
 import imageTobass64 from '../../helpers/imageTobass64.js/imageTobass64';
 import Post from '../Posts/Posts';
-const PostById = () => {
-  const user = useSelector(state => state?.user?.user)
+import { useParams } from 'react-router-dom';
+const YourProfilePost = ({ userData }) => {
+  console.log("userdata", userData);
+
   const imageRef = useRef();
   const [data, setData] = useState({
-    name: user?.name,
-    userId: user?._id,
+    name: userData?.name,
+    userId: userData?._id,
     img: null,
     video: "",
     desc: ""
@@ -64,55 +65,49 @@ const PostById = () => {
       toast.error("Posted Error")
     }
   }
+  const params = useParams()
   const [dataPost, setDataPost] = useState([])
   const fetchData = async () => {
-    const response = await fetch(SummaryApi.getPostById.url, {
-      method: SummaryApi.getPostById.method,
-      credentials: 'include',
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(user)
+    const response = await fetch(SummaryApi.getPostByParams.url + params.id, {
     })
     const responseData = await response.json()
-    console.log("json", responseData.data);
     setDataPost(responseData.data)
   }
   useEffect(() => {
     fetchData()
-  }, [])
-  console.log('datarespon', dataPost);
+  }, [params])
+  // console.log('datarespon', dataPost);
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className='flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-[1rem]'>
-          <img className='hidden sm:block rounded-full w-[3rem] h-[3rem] sm:w-[4rem] sm:h-[4rem] object-cover' src={user?.profilePic} alt='' />
+        <div className='flex gap-4 bg-white p-4 rounded-[1rem]'>
+          <img className='rounded-full w-[3rem] h-[3rem] object-cover' src={userData?.profilePic} alt='' />
           <div className='flex flex-col w-[90%] gap-4'>
             <input
-              className='rounded-[10px] p-[10px] text-[15px] sm:text-[17px] border-none outline-none bg-slate-200 w-full'
+              className='rounded-[10px] p-[10px] text-[17px] border-none outline-none bg-slate-200'
               type='text'
               placeholder="What's happening"
               name='happen'
               onChange={handleOnchange}
               value={data?.desc}
             />
-            <div className='flex flex-wrap justify-around'>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px]  cursor-pointer text-green-600'
+            <div className='flex justify-around'>
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer text-green-600'
                 onClick={() => imageRef.current.click()} onChange={handleOnchange}
               >
-                <CiImageOn className='w-5 sm:w-6 h-auto' />
+                <CiImageOn className='w-6 h-auto' />
                 Photo
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-blue-600'>
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer text-blue-600'>
                 <BiSolidCaretRightCircle className='w-6 h-auto' />
                 Video
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer
           text-red-600'>
                 <HiOutlineMapPin className='w-6 h-auto' />
                 Location
               </div>
-              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px]  cursor-pointer
+              <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] cursor-pointer
           text-yellow-600'>
                 <FaRegCalendarAlt className='w-6 h-auto' />
                 Shedule
@@ -160,4 +155,4 @@ const PostById = () => {
   )
 }
 
-export default PostById
+export default YourProfilePost

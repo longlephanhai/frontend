@@ -10,6 +10,7 @@ import { FaX } from 'react-icons/fa6';
 import 'emoji-picker-element';
 import EmojiPickerComponent from '../../components/EmojiPicker/EmojiPicker';
 import { MdEmojiEmotions } from "react-icons/md";
+import './Chat.scss'
 const Chat = () => {
   const socketRef = useRef(null);
   const user = useSelector(state => state?.user?.user)
@@ -77,6 +78,7 @@ const Chat = () => {
       socketRef.current.emit('client_send_message', message, img, user?._id, user?.name, user?.profilePic);
       setMessage('');
       setImg(null)
+      socketRef.current.emit("CLIENT_SEND_TYPYNG", "hidden", user?._id, user?.name);
     }
   };
   const containerRef = useRef(null);
@@ -104,6 +106,33 @@ const Chat = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // client send typing
+  const handleOnKeyUP = () => {
+    socketRef.current.emit("CLIENT_SEND_TYPYNG", "show", user?._id, user?.name);
+
+  }
+  //end client send typing
+  // Server return typing
+  const [show, setShow] = useState(false);
+  var timeOut = useRef();
+  useEffect(() => {
+    socketRef.current.on("SERVER_RETURN_TYPING", (data) => {
+      if (data.type === "show") {
+        if (user?._id === data.touser) {
+          setShow(true);
+          containerRef.current.scrollTop = containerRef.current.scrollHeight;
+          clearTimeout(timeOut.current);
+          timeOut.current = setTimeout(() => {
+            setShow(false);
+          }, 3000)
+        }
+      } else {
+        setShow(false)
+      }
+    });
+  }, [user?._id])
+  // End Server return typing
   return (
     <div className="flex flex-col h-[85vh] max-w-3xl mx-auto border border-gray-200 rounded-lg shadow-lg overflow-hidden m-4 ">
       {
@@ -138,7 +167,15 @@ const Chat = () => {
             </div>
           </div>
         ))}
-
+        {
+          show ? <div className='relative'>
+            <div className='relative h-[20px] w-[50px] inline-flex items-center justify-center bg-slate-100 rounded-[45px] mt-2px'>
+              <span className='dot'></span>
+              <span className='dot'></span>
+              <span className='dot'></span>
+            </div>
+          </div> : ""
+        }
       </div>
       {
         img && (
@@ -161,6 +198,7 @@ const Chat = () => {
             className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 pl-10"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onKeyUp={handleOnKeyUP}
             placeholder="Type your message..."
           />
           <MdEmojiEmotions
@@ -178,7 +216,6 @@ const Chat = () => {
         <div style={{ display: 'none' }}>
           <input type='file' name='myImage' ref={imageRef} onChange={onImageChange} accept='image/*' />
         </div>
-
       </div>
     </div >
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 // import loginIcons from '../../assest/assest/signin.gif'; // Sửa đường dẫn file
 import googleLogo from '../../assest/assest/idesign_logogg_1.webp'; // Thêm logo Google
 import { Link, NavLink, useNavigate } from 'react-router-dom';
@@ -6,10 +6,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import Context from '../../context';
 import { useGoogleLogin } from '@react-oauth/google';
-import SummaryApi from '../../common';
+import SummaryApi, { backendDomin } from '../../common';
 import { RxAvatar } from "react-icons/rx";
 import { Avatar } from 'antd';
+import io from 'socket.io-client';
 const Login = () => {
+  const socketRef = useRef(null);
+
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState({
     email: "",
@@ -41,6 +44,7 @@ const Login = () => {
       navigate('/');
       fetchUserDetails();
       fetchUserAddToCart();
+      socketRef.current = io(backendDomin);
     }
     if (dataApi.error) {
       toast.error(dataApi.message);

@@ -16,7 +16,6 @@ const AllUser = () => {
     role: '',
     _id: '',
   });
-
   const fetchAllUsers = async () => {
     const fetchData = await fetch(SummaryApi.allUser.url, {
       method: SummaryApi.allUser.method,

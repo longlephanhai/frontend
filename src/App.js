@@ -13,6 +13,7 @@ import { setUserDetails } from './store/userSlice';
 import Loading from './pages/Loading/Loading';
 import { FloatButton } from 'antd';
 import { ToTopOutlined } from '@ant-design/icons';
+
 function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -58,6 +59,7 @@ function App() {
     // user favorite
     fetchUserFavorite()
   }, [])
+
   return (
     <>
       <Context.Provider value={{
@@ -88,6 +90,7 @@ function App() {
                 >
                   <FloatButton icon={<CommentOutlined />} onClick={handleOnClick} />
                 </FloatButton.Group> */}
+
               </main>
               <Footer />
             </>

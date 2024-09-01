@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import img1 from '../../assest/assest/cover.webp'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { FaCircleUser } from "react-icons/fa6";
 const ProfileCard = () => {
   const user = useSelector(state => state?.user?.user)
   const navigate = useNavigate()
@@ -17,9 +18,15 @@ const ProfileCard = () => {
         <img className='w-full rounded-se-[1.5rem] rounded-ss-[1.5rem]'
           src={img1}
           alt='' />
-        <img className='w-20 h-20 rounded-full absolute -bottom-[3rem] shadow-sm object-cover'
-          src={user?.profilePic}
-          alt='' />
+        {
+          user?.profilePic ? <
+            img className='w-20 h-20 rounded-full absolute -bottom-[3rem] shadow-sm object-cover'
+            src={user?.profilePic}
+            alt='' />
+            :
+            <FaCircleUser className='w-20 h-20 rounded-full absolute -bottom-[3rem] shadow-sm object-cover' />
+        }
+
       </div>
       <div className='flex flex-col items-center mt-[3rem] gap-[10px]'>
         <span className='font-bold'>{user?.name}</span>

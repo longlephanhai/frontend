@@ -25,6 +25,13 @@ import Profile from "../pages/Profile/Profile";
 import PostList from "../pages/PostList/PostList";
 import Chat from "../pages/Chat/Chat";
 import ListMessage from "../pages/ListMessage/ListMessage";
+import YourProfile from "../pages/YourProfile/YourProfile";
+import NotFriend from "../pages/NotFriend/NotFriend";
+import Friend from "../pages/Friend/Friend";
+import Request from "../pages/Request/Request";
+import Accept from "../pages/Accept/Accept";
+import RoomChat from "../pages/RoomChat/RoomChat";
+
 // import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
@@ -45,16 +52,16 @@ export const router = createBrowserRouter([
         element: <ForgotPassword />
       },
       {
-        path:"/reset-password/:token",
-        element:<ResetPassword/>
+        path: "/reset-password/:token",
+        element: <ResetPassword />
       },
       {
         path: "/sign-up",
         element: <SignUp />
       },
       {
-        path:"/confirm-email",
-        element:<ConfirmEmail/>
+        path: "/confirm-email",
+        element: <ConfirmEmail />
       },
       {
         path: '/product-category',
@@ -85,20 +92,44 @@ export const router = createBrowserRouter([
         element: <MyOrder />
       },
       {
-        path:"orderdetail/:id",
-        element:<OrderDetail/>
+        path: "orderdetail/:id",
+        element: <OrderDetail />
       },
       {
-        path:"social",
-        element:<Socical/>
+        path: "/social",
+        element: <Socical />,
       },
       {
-        path:"profile/:id",
-        element:<Profile/>
+        path: "profile/:id",
+        element: <Profile />
       },
       {
-        path:"chat",
-        element:<Chat/>
+        path: "chat",
+        element: <Chat />
+      },
+      {
+        path: "your-profile/:id",
+        element: <YourProfile />
+      },
+      {
+        path: "not-friend",
+        element: <NotFriend />
+      },
+      {
+        path: 'friend',
+        element: <Friend />
+      },
+      {
+        path: 'request',
+        element: <Request />
+      },
+      {
+        path: 'accept',
+        element: <Accept />
+      },
+      {
+        path: 'room-chat/:id',
+        element: <RoomChat />
       },
       {
         path: "/admin-panel",
@@ -121,16 +152,16 @@ export const router = createBrowserRouter([
             element: <PageCalendar />
           },
           {
-            path:'orderlist',
-            element:<OrderList/>
+            path: 'orderlist',
+            element: <OrderList />
           },
           {
-            path:'post-list',
-            element:<PostList/>
+            path: 'post-list',
+            element: <PostList />
           },
           {
-            path:'list-message',
-            element:<ListMessage/>
+            path: 'list-message',
+            element: <ListMessage />
           }
         ]
       },

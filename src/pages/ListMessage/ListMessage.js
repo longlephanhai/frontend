@@ -11,6 +11,7 @@ import { FaX } from 'react-icons/fa6';
 import { CiImageOn } from 'react-icons/ci';
 import EmojiPickerComponent from '../../components/EmojiPicker/EmojiPicker';
 import { MdEmojiEmotions } from 'react-icons/md';
+import { FaCircleUser } from "react-icons/fa6";
 const ListMessage = () => {
   const navigate = useNavigate()
   const socketRef = useRef(null);
@@ -18,6 +19,7 @@ const ListMessage = () => {
   const [id, setId] = useState('')
   const [dataList, setDataList] = useState([])
   const [hasMessages, setHasMessages] = useState(true);
+
   const fetchApi = async () => {
     const response = await fetch(SummaryApi.listMessage.url, {
       method: SummaryApi.listMessage.method,
@@ -77,7 +79,6 @@ const ListMessage = () => {
   useEffect(() => {
     socketRef.current = io(backendDomin);
     socketRef.current.on('server_return_message', (chat) => {
-
       if (chat.userId === id || chat.toUser === id) {
         setDataMessage((prevMessages) => [...prevMessages, chat]);
       }
@@ -90,6 +91,7 @@ const ListMessage = () => {
     if (message.trim() || img) {
       socketRef.current.emit('client_send_message', message, img, user?._id, user?.name, user.profilePic, id);
       setMessage('');
+      socketRef.current.emit("CLIENT_SEND_TYPYNG", "hidden", user?._id, user?.name, id);
       setImg(null)
     }
   };
@@ -119,6 +121,33 @@ const ListMessage = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  // client send typing
+  const handleOnKeyUP = () => {
+    socketRef.current.emit("CLIENT_SEND_TYPYNG", "show", user?._id, user?.name, id);
+
+  }
+  //end client send typing
+
+  // Server return typing
+  const [show, setShow] = useState(false);
+  var timeOut = useRef();
+  useEffect(() => {
+    socketRef.current.on("SERVER_RETURN_TYPING", (data) => {
+      if (data.type === "show") {
+        if (data.userId === id) {
+          setShow(true);
+          containerRef.current.scrollTop = containerRef.current.scrollHeight;
+          clearTimeout(timeOut.current);
+          timeOut.current = setTimeout(() => {
+            setShow(false);
+          }, 3000)
+        }
+      } else {
+        setShow(false)
+      }
+    });
+  }, [id])
+  // End Server return typing
   return (
     <div className='flex flex-wrap -ml-5'>
       <div className='flex flex-col p-4 gap-4 border min-h-[100vh] bg-white overflow-y-auto'>
@@ -129,7 +158,11 @@ const ListMessage = () => {
               onClick={() => handleOnClick(item.userId)}
               key={index}
               className='flex items-center justify-start gap-4 w-full h-auto cursor-pointer transition-all hover:bg-inherit hover:text-pink-600'>
-              <img className='w-[3rem] h-[3rem] rounded-full object-cover' src={item.profilePic} alt='' />
+              {
+                item.profilePic ? <img className='w-[3rem] h-[3rem] rounded-full object-cover' src={item.profilePic} alt='' />
+                  :
+                  <FaCircleUser className='w-[3rem] h-[3rem] rounded-full object-cover' />
+              }
               <p>{item.name}</p>
               <hr />
             </div>
@@ -145,7 +178,13 @@ const ListMessage = () => {
             {
               profile && (
                 <div className='flex gap-2 p-2 items-center justify-start bg-pink-400'>
-                  <img src={profile.profilePic} alt='' className='w-[3rem] h-[3rem] rounded-full object-cover cursor-pointer' onClick={() => navigate(`/profile/${profile._id}`)} />
+                  {
+                    profile.profilePic ?
+                      <img src={profile.profilePic} alt='' className='w-[3rem] h-[3rem] rounded-full object-cover cursor-pointer' onClick={() => navigate(`/your-profile/${profile._id}`)} />
+                      :
+                      <FaCircleUser className='w-[3rem] h-[3rem] rounded-full object-cover cursor-pointer' onClick={() => navigate(`/your-profile/${user._id}`)} />
+                  }
+
                   <div>
                     <div className='text-white'>
                       {profile.name}
@@ -153,6 +192,7 @@ const ListMessage = () => {
                   </div>
                 </div>
               )
+
             }
             <div className="flex flex-col flex-1 max-h-[70vh] overflow-y-auto scrollbar-none p-4 bg-gray-50" ref={containerRef}>
               {dataMessage.map((msg, index) => (
@@ -172,6 +212,15 @@ const ListMessage = () => {
                   </div>
                 </div>
               ))}
+              {
+                show ? <div className='relative'>
+                  <div className='relative h-[20px] w-[50px] inline-flex items-center justify-center bg-slate-100 rounded-[45px] mt-2px'>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                    <span className='dot'></span>
+                  </div>
+                </div> : ""
+              }
             </div>
             {
               img && (
@@ -194,6 +243,7 @@ const ListMessage = () => {
                   className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 pl-10"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  onKeyUp={handleOnKeyUP}
                   placeholder="Type your message..."
                 />
                 <MdEmojiEmotions

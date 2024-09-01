@@ -1,16 +1,16 @@
 import React from 'react'
 import LogoSearch from '../LogoSearch/LogoSearch'
-import ProfileCard from '../ProfileCard/ProfileCard'
+import YourProfileInfor from '../YourProfileInfor/YourProfileInfor'
 import FollowersCard from '../FollowersCard/FollowersCard'
 
-const ProfileSide = () => {
+const YourProfileLeft = ({data}) => {
   return (
     <div className='flex flex-col gap-4 items-center overflow-auto'>
       <LogoSearch />
-      <ProfileCard />
+      <YourProfileInfor data={data} />
       <FollowersCard />
     </div>
   )
 }
 
-export default ProfileSide
+export default YourProfileLeft

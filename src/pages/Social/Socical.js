@@ -5,10 +5,10 @@ import RightSide from '../../components/RightSide/RightSide'
 
 const Socical = () => {
   return (
-    <div className='relative grid grid-cols-[18rem_auto_20rem] gap-4 m-1'>
-      <ProfileSide/>
-      <PostSide/>
-      <RightSide/>
+    <div className='relative md:grid md:grid-cols-[18rem_auto_20rem] gap-4 m-1 flex flex-col'>
+      <ProfileSide />
+      <PostSide />
+      <RightSide />
     </div>
   )
 }

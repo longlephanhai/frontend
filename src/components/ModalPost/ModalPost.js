@@ -4,6 +4,8 @@ import { Modal } from 'antd';
 import Post from '../Posts/Posts';
 import SummaryApi from '../../common';
 const ModalPost = ({ id, open, setOpen }) => {
+  console.log("id",id);
+  
   const [data, setData] = useState({});
   const fetchApi = async () => {
     const response = await fetch(SummaryApi.postModal.url, {
@@ -26,8 +28,8 @@ const ModalPost = ({ id, open, setOpen }) => {
   const handleCancel = () => {
     setOpen(false);
   };
-  console.log("data",data);
-  
+  console.log("datapót", data);
+
   return (
     <>
       <Modal title="Post" open={open} onOk={handleOk} onCancel={handleCancel}>
