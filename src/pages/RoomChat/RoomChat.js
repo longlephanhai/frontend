@@ -154,7 +154,7 @@ const RoomChat = () => {
   const [openFriendList, setOpenFriendList] = useState(false);
   return (
     <div className='grid grid-cols-1 md:grid-cols-[18rem_auto]'>
-      <div className={`md:block ${openFriendList ? 'block' : 'hidden'}`}  onClick={() => setOpenFriendList(false)}>
+      <div className={`md:block ${openFriendList ? 'block' : 'hidden'}`} onClick={() => setOpenFriendList(false)}>
         <FriendList />
       </div>
       <div className={` ${openFriendList ? 'hidden' : 'block'}`}>
