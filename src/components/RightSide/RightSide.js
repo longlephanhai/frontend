@@ -18,10 +18,6 @@ const RightSide = () => {
 
   // server return length accpet friend
   const socketRef = useRef(null);
-  // socketRef.current = io(backendDomin);
-  // socketRef.current.on("SERVER_RETURN_LENGTH_ACCEPT_FRIEND", (data) => {
-  //   console.log("data", data);
-  // });
   const [length, setLength] = useState(user?.acceptFriends.length)
   useEffect(() => {
     socketRef.current = io(backendDomin);
@@ -37,19 +33,19 @@ const RightSide = () => {
 
 
   return (
-    <div className='md:flex flex-col gap-8 hidden'>
-      <div className='flex mt-4 justify-between'>
-        <FaUsers className='text-xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/not-friend')} />
-        <FaUserFriends className='text-xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/friend')} />
-        <IoPersonAddSharp className='text-xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/request')} />
+    <div className='flex flex-col gap-8'>
+      <div className='md:flex mt-4 mx-4 justify-between hidden'>
+        <FaUsers className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/not-friend')} />
+        <FaUserFriends className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/friend')} />
+        <IoPersonAddSharp className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/request')} />
         <div className='flex'>
-          <FaBell className='text-xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/accept')} />
+          <FaBell className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/accept')} />
           <span>{length}</span>
         </div>
-        <FaCommentDots className='text-xl hover:text-pink-500 cursor-pointer' />
+        <FaCommentDots className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' />
       </div>
       <TrendCard />
-      <button className='flex items-center justify-center self-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-[3rem] w-[80%] px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600 hover:border-[1px]'>
+      <button className='md:flex items-center justify-center self-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-[3rem] w-[80%] md:w-[60%] lg:w-[40%] px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600 hover:border-[1px] hidden'>
         Share
       </button>
     </div>
