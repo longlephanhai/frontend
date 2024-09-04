@@ -21,8 +21,6 @@ const FriendList = () => {
   useEffect(() => {
     fetchApi();
   }, []);
-  console.log("data", data);
-
   return (
     <div className="flex flex-col p-4 gap-4 border min-h-[100vh] bg-white overflow-y-auto">
       {data.map((user, index) => (
@@ -42,7 +40,6 @@ const FriendList = () => {
               user?.statusOnline === "online" ?
                 <span className="text-base sm:text-sm text-green-500">{user?.statusOnline}</span> : <span className="text-base sm:text-sm text-red-500">{user?.statusOnline}</span>
             }
-
           </div>
         </div>
       ))}
