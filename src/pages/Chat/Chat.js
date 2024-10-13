@@ -11,6 +11,7 @@ import 'emoji-picker-element';
 import EmojiPickerComponent from '../../components/EmojiPicker/EmojiPicker';
 import { MdEmojiEmotions } from "react-icons/md";
 import './Chat.scss'
+import { Image } from 'antd';
 const Chat = () => {
   const socketRef = useRef(null);
   const user = useSelector(state => state?.user?.user)
@@ -133,6 +134,7 @@ const Chat = () => {
     });
   }, [user?._id])
   // End Server return typing
+ 
   return (
     <div className="flex flex-col h-[85vh] max-w-3xl mx-auto border border-gray-200 rounded-lg shadow-lg overflow-hidden m-4 ">
       {
@@ -161,7 +163,9 @@ const Chat = () => {
               }
               {
                 msg.image ?
-                  <img src={msg?.image} alt='' className="mt-2 rounded-lg shadow-md w-auto h-auto objectfill-cover" /> :
+                  // <img src={msg?.image} alt='' className="mt-2 rounded-lg shadow-md w-[6rem] h-[6rem] objectfill-cover" /> 
+                  <Image src={msg?.image} width={200} alt='' className="mt-2 rounded-lg shadow-md w-[3rem] h-[3rem] objectfill-cover" />
+                  :
                   ""
               }
             </div>

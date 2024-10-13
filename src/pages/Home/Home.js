@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CategoryList from '../../components/CategoryList/CategoryList'
 import BannerProduct from '../../components/BannerProduct/BannerProduct'
 import HorizontalCartProduct from '../../components/HorizontalCardProduct/HorizontalCartProduct'
-// import ChatBot from 'react-simple-chatbot'
+import ChatBot from 'react-simple-chatbot'
 import Brand from '../../components/Brand/Brand'
 import Countdown from '../../components/CountDown/CountDown'
 import BannerItems from '../../components/BannerItems/BannerItems'
@@ -109,19 +109,19 @@ const Home = () => {
       <div className='m-4 mt-6' id="category">
         <CategoryList />
       </div>
-      <HorizontalCartProduct category={"blush"} heading={"Top's Blush"} />
-      <HorizontalCartProduct category={"facialoil"} heading={"Top's Facialoil"} />
-      <HorizontalCartProduct category={"facialoil-cleanser"} heading={"Top's Facialoil-Cleanser"} />
-      <HorizontalCartProduct category={"lipstick"} heading={"Top's Lipstick"} />
-      <HorizontalCartProduct category={"perfume"} heading={"Top's Perfume"} />
-      <HorizontalCartProduct category={"serum"} heading={"Top's Serum"} />
-      <HorizontalCartProduct category={"sunscreen"} heading={"Top's Sunscreen"} />
-      <HorizontalCartProduct category={"toner"} heading={"Top's Toner"} />
+      <HorizontalCartProduct category={"blush"} heading={"Top's Blush"} time={3000}/>
+      <HorizontalCartProduct category={"facialoil"} heading={"Top's Facialoil"} time={5000} />
+      <HorizontalCartProduct category={"facialoil-cleanser"} heading={"Top's Facialoil-Cleanser"} time={3000}/>
+      <HorizontalCartProduct category={"lipstick"} heading={"Top's Lipstick"} time={5000}/>
+      <HorizontalCartProduct category={"perfume"} heading={"Top's Perfume"} time={3000}/>
+      <HorizontalCartProduct category={"serum"} heading={"Top's Serum"} time={5000}/>
+      <HorizontalCartProduct category={"sunscreen"} heading={"Top's Sunscreen"} time={3000}/>
+      <HorizontalCartProduct category={"toner"} heading={"Top's Toner"} time={5000}/>
       {/* <FeatureArea className='mt-7' /> */}
       {/* <ProductArea/> */}
 
 
-      {/* <button
+       <button
         onClick={() => setShowChatBot(!showChatBot)}
         className="fixed bottom-4 right-4 w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 focus:outline-none"
         aria-label="Open ChatBot"
@@ -133,7 +133,7 @@ const Home = () => {
         <div className="fixed bottom-20 mb-36 mr-16 right-4 w-80 h-96 bg-white shadow-lg z-50">
           <ChatBot steps={steps} />
         </div>
-      )} */}
+      )} 
     </>
   )
 }

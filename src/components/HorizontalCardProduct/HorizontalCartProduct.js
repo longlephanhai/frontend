@@ -16,7 +16,10 @@ import hoa from '../../assest/assest/hoq (1).webp'
 import SummaryApi from '../../common/index.js'
 import { toast } from 'react-toastify'
 import { FaHeart } from "react-icons/fa";
-const HorizontalCartProduct = ({ category, heading }) => {
+import { Autoplay } from 'swiper/modules'
+
+const HorizontalCartProduct = ({ category, heading,time }) => {
+
   const [data, setData] = useState([])
   // const scrollElement = useRef()
   const { fetchUserAddToCart, fetchUserFavorite } = useContext(Context)
@@ -77,6 +80,7 @@ const HorizontalCartProduct = ({ category, heading }) => {
       </h2>
       <div className='relative'>
         <Swiper
+          modules={[Autoplay]}
           spaceBetween={16}
           slidesPerView={'auto'}
           navigation={{
@@ -84,6 +88,7 @@ const HorizontalCartProduct = ({ category, heading }) => {
             prevEl: '.swiper-button-prev',
           }}
           className='py-4'
+          autoplay={{ delay:time, disableOnInteraction: false }}
         >
           <div className='swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-3 text-2xl z-10 cursor-pointer hover:bg-gray-200 transition-all'>
             <FaAngleLeft />
