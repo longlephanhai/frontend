@@ -78,7 +78,7 @@ const Friend = () => {
               <div className='text-md font-medium mb-2'>{friend.name}</div>
               <button
                 onClick={() => navigate(`/room-chat/${friend.roomChatId}`)}
-                className='bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700 transition duration-200'
+                className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200'
               >Send</button>
               <div className='absolute top-4 right-4'>
                 {friend.statusOnline === "online" ? (

@@ -112,7 +112,7 @@ const YourProfilePost = ({ userData }) => {
                 <FaRegCalendarAlt className='w-6 h-auto' />
                 Shedule
               </div>
-              <button className='flex items-center border justify-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600'
+              <button className='flex items-center border justify-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600'
                 onClick={handleSubmit}
               >
                 Share

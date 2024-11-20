@@ -70,11 +70,11 @@ const ReviewProduct = ({ productId }) => {
       <form onSubmit={handleSubmmit} className="mb-8">
         <div className="flex flex-col md:flex-row  gap-4 mb-6">
           <div className="flex  items-center">
-            <Rate tooltips={desc} onChange={setRate} value={rate} className="text-pink-400" />
+            <Rate tooltips={desc} onChange={setRate} value={rate} className="text-red-400" />
           </div>
         </div>
         <textarea
-          className="w-full p-3 border border-gray-300 rounded-lg mb-6 resize-none focus:outline-none focus:ring-2 focus:ring-pink-400"
+          className="w-full p-3 border border-gray-300 rounded-lg mb-6 resize-none focus:outline-none focus:ring-2 focus:ring-red-400"
           placeholder="Your comment"
           value={comment}
           required
@@ -82,7 +82,7 @@ const ReviewProduct = ({ productId }) => {
         />
         <button
           type="submit"
-          className="w-full bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition duration-300"
+          className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300"
         >
           Send Review
         </button>
@@ -104,7 +104,7 @@ const ReviewProduct = ({ productId }) => {
                 }} icon={<UserOutlined />} className='w-auto h-auto' />
                 <div className="flex flex-col w-full">
                   <div className="flex items-center gap-x-2 flex-wrap w-full">
-                    <Rate disabled defaultValue={review.rating} className="text-pink-400 w-full" />
+                    <Rate disabled defaultValue={review.rating} className="text-red-400 w-full" />
                     <p className='font-light text-sm'>{formatDate(review.updatedAt)}</p>
                   </div>
                   <p className="text-gray-700 leading-relaxed"><i>{review.comment}</i></p>

@@ -119,8 +119,6 @@ const Home = () => {
       <HorizontalCartProduct category={"toner"} heading={"Top's Toner"} time={5000}/>
       {/* <FeatureArea className='mt-7' /> */}
       {/* <ProductArea/> */}
-
-
        <button
         onClick={() => setShowChatBot(!showChatBot)}
         className="fixed bottom-4 right-4 w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 focus:outline-none"

@@ -75,7 +75,7 @@ const HorizontalCartProduct = ({ category, heading,time }) => {
   }
   return (
     <div className='container mx-auto px-4 my-8' id='products'>
-      <h2 className='text-3xl text-pink-400 py-6 flex items-center justify-center'>{heading}
+      <h2 className='text-3xl text-red-400 py-6 flex items-center justify-center'>{heading}
         <img src={hoa} alt='' width={50} height={"auto"} />
       </h2>
       <div className='relative'>
@@ -116,7 +116,7 @@ const HorizontalCartProduct = ({ category, heading,time }) => {
                   </h2>
                   <p className='capitalize text-slate-500'>{item?.category}</p>
                   <div className='flex gap-3 items-center justify-center'>
-                    <p className='text-pink-600 font-medium'>
+                    <p className='text-red-600 font-medium'>
                       {displayUSDCurrency(item?.sellingPrice)}
                     </p>
                     <p className='text-slate-500 line-through'>
@@ -124,7 +124,7 @@ const HorizontalCartProduct = ({ category, heading,time }) => {
                     </p>
                   </div>
                   <button
-                    className='mt-2 text-sm bg-pink-600 hover:bg-pink-700 text-white px-4 py-1 rounded-full transition-colors'
+                    className='mt-2 text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full transition-colors'
                     onClick={(e) => handleAddToCart(e, item?._id)}
                   >
                     Add to Cart
@@ -133,7 +133,7 @@ const HorizontalCartProduct = ({ category, heading,time }) => {
                     className='mt-2 text-sm bg-transparent  text-white px-2 py-2 rounded-full transition-colors flex items-center justify-center absolute right-2 top-1'
                     onClick={(e) => handleLike(e, item?._id)}
                   >
-                    <FaHeart className='text-white h-6 w-6 fill-current hover:text-pink-600' />
+                    <FaHeart className='text-white h-6 w-6 fill-current hover:text-red-600' />
                   </button>
 
                 </div>

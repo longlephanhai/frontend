@@ -34,6 +34,7 @@ const Payment = () => {
     fetchAllProduct()
   }, [])
   console.log("product list", productList);
+
   const getTotal = localStorage.getItem("total")
   const total = Number(getTotal);
   const [data, setData] = useState({
@@ -133,80 +134,80 @@ const Payment = () => {
     }
   };
   return (
-      <Form onFinish={placeOrder} className='place-order min-h-[100vh]'>
-        <Row gutter={24} style={{ backgroundColor: 'white' }} className='md:h-[100vh]'>
-          <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
-            <Card title="Delivery Information" bordered={false} style={{ height: '100%', border: 'none' }}>
-              <Row gutter={16}>
-                <Col span={12}>
-                  <Item name='firstName' rules={[{ required: true, message: 'First name is required' }]}>
-                    <Input name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item name='lastName' rules={[{ required: true, message: 'Last name is required' }]}>
-                    <Input name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' />
-                  </Item>
-                </Col>
-              </Row>
-              <Item name='email' rules={[{ required: true, type: 'email', message: 'Valid email is required' }]}>
-                <Input name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' />
-              </Item>
-              <Item name='street' rules={[{ required: true, message: 'Street is required' }]}>
-                <Input name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' />
-              </Item>
-              <Row gutter={16}>
-                <Col span={12}>
-                  <Item name='city' rules={[{ required: true, message: 'City is required' }]}>
-                    <Input name='city' onChange={onChangeHandler} value={data.city} placeholder='City' />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item name='state' rules={[{ required: true, message: 'State is required' }]}>
-                    <Input name='state' onChange={onChangeHandler} value={data.state} placeholder='State' />
-                  </Item>
-                </Col>
-              </Row>
-              <Row gutter={16}>
-                <Col span={12}>
-                  <Item name='zipcode' rules={[{ required: true, message: 'Zip code is required' }]}>
-                    <Input name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item name='country' rules={[{ required: true, message: 'Country is required' }]}>
-                    <Input name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' />
-                  </Item>
-                </Col>
-              </Row>
-              <Item name='phone' rules={[{ required: true, message: 'Phone number is required' }]}>
-                <Input name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' />
-              </Item>
-            </Card>
-          </Col>
-          <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
-            <Card title="Cart Totals" bordered={false} style={{ height: '100%', border: 'none' }}>
-              <div className='cart-total'>
-                <div className='cart-total-details'>
-                  <p>Subtotal</p>
-                  <p>{total}</p>
-                </div>
-                <hr />
-                <div className='cart-total-details'>
-                  <p>Delivery Fee</p>
-                  <p>${total === 0 ? 0 : 2}</p>
-                </div>
-                <hr />
-                <div className='cart-total-details'>
-                  <p>Total</p>
-                  <p>{total === 0 ? 0 : Number(total) + 2}</p>
-                </div>
-                <Button type='primary' htmlType='submit' style={{ marginTop: '20px', width: '100%' }}>PROCEED TO PAYMENT</Button>
+    <Form onFinish={placeOrder} className='place-order min-h-[100vh]'>
+      <Row gutter={24} style={{ backgroundColor: 'white' }} className='md:h-[100vh]'>
+        <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
+          <Card title="Delivery Information" bordered={false} style={{ height: '100%', border: 'none' }}>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Item name='firstName' rules={[{ required: true, message: 'First name is required' }]}>
+                  <Input name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' />
+                </Item>
+              </Col>
+              <Col span={12}>
+                <Item name='lastName' rules={[{ required: true, message: 'Last name is required' }]}>
+                  <Input name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' />
+                </Item>
+              </Col>
+            </Row>
+            <Item name='email' rules={[{ required: true, type: 'email', message: 'Valid email is required' }]}>
+              <Input name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' />
+            </Item>
+            <Item name='street' rules={[{ required: true, message: 'Street is required' }]}>
+              <Input name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' />
+            </Item>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Item name='city' rules={[{ required: true, message: 'City is required' }]}>
+                  <Input name='city' onChange={onChangeHandler} value={data.city} placeholder='City' />
+                </Item>
+              </Col>
+              <Col span={12}>
+                <Item name='state' rules={[{ required: true, message: 'State is required' }]}>
+                  <Input name='state' onChange={onChangeHandler} value={data.state} placeholder='State' />
+                </Item>
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Item name='zipcode' rules={[{ required: true, message: 'Zip code is required' }]}>
+                  <Input name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' />
+                </Item>
+              </Col>
+              <Col span={12}>
+                <Item name='country' rules={[{ required: true, message: 'Country is required' }]}>
+                  <Input name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' />
+                </Item>
+              </Col>
+            </Row>
+            <Item name='phone' rules={[{ required: true, message: 'Phone number is required' }]}>
+              <Input name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' />
+            </Item>
+          </Card>
+        </Col>
+        <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
+          <Card title="Cart Totals" bordered={false} style={{ height: '100%', border: 'none' }}>
+            <div className='cart-total'>
+              <div className='cart-total-details'>
+                <p>Subtotal</p>
+                <p>{total}</p>
               </div>
-            </Card>
-          </Col>
-        </Row>
-      </Form>
+              <hr />
+              <div className='cart-total-details'>
+                <p>Delivery Fee</p>
+                <p>${total === 0 ? 0 : 2}</p>
+              </div>
+              <hr />
+              <div className='cart-total-details'>
+                <p>Total</p>
+                <p>{total === 0 ? 0 : Number(total) + 2}</p>
+              </div>
+              <Button type='primary' htmlType='submit' style={{ marginTop: '20px', width: '100%' }}>PROCEED TO PAYMENT</Button>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+    </Form>
   )
 }
 

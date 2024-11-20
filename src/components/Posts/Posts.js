@@ -157,11 +157,11 @@ const Post = ({ data: initialData, id }) => {
                     value={dataComment}
                     onChange={e => setDataComment(e.target.value)}
                     placeholder='Add a comment...'
-                    className='flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500'
+                    className='flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500'
                   />
                   <button
                     type='submit'
-                    className='px-4 py-2 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition duration-200'
+                    className='px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-200'
                   >
                     Send
                   </button>

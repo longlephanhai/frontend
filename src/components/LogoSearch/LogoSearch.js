@@ -51,7 +51,7 @@ const LogoSearch = () => {
           value={search}
           placeholder='#Search' />
         <div className='flex items-center justify-center rounded-[5px]
-         p-[5px] text-white hover:cursor-pointer bg-pink-400
+         p-[5px] text-white hover:cursor-pointer bg-red-400
         '>
           <MdSearch />
         </div>

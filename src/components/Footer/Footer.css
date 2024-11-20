@@ -1,8 +1,9 @@
 /* :where(.css-dev-only-do-not-override-1okl62o).ant-btn-primary{
-    background:#DB2777;
+    background:#EF4444;
 } */
-:where(.css-dev-only-do-not-override-1r287do).ant-btn-primary{
-    background:#DB2777;
+:where(.css-dev-only-do-not-override-1x0dypw).ant-btn-variant-solid{
+    background:red;
+    border-color:red;
 }
 /* @media(max-width:425.98px){
     .footer-head{

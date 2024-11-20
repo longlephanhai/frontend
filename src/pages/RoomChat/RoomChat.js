@@ -160,9 +160,9 @@ const RoomChat = () => {
       <div className={` ${openFriendList ? 'hidden' : 'block'}`}>
         <div className="flex flex-col h-[90vh] w-full max-w-5xl mx-auto border border-gray-200 rounded-lg shadow-lg overflow-hidden mt-4">
           {friend && (
-            <div className='flex gap-2 p-2 items-center justify-start bg-pink-400'>
+            <div className='flex gap-2 p-2 items-center justify-start bg-red-400'>
               <FaArrowLeft
-                className='md:hidden block text-2xl text-pink-700 cursor-pointer'
+                className='md:hidden block text-2xl text-red-700 cursor-pointer'
                 onClick={() => setOpenFriendList(true)}  // Sửa lỗi hàm gọi
               />
               <img src={friend?.profilePic} alt='' className='w-[3rem] h-[3rem] rounded-full object-cover cursor-pointer' />
@@ -191,7 +191,7 @@ const RoomChat = () => {
                 <div className='flex flex-col'>
                   {msg.content && (
                     <p
-                      className={`p-1 py-1 px-2 ${msg.user_id === user?._id ? 'bg-pink-500' : 'bg-slate-200'
+                      className={`p-1 py-1 px-2 ${msg.user_id === user?._id ? 'bg-red-500' : 'bg-slate-200'
                         } rounded-2xl`}
                     >
                       {msg.content}
@@ -242,7 +242,7 @@ const RoomChat = () => {
               )}
               <input
                 type="text"
-                className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 pl-10"
+                className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 pl-10"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyUp={handleOnKeyUP}
@@ -250,15 +250,15 @@ const RoomChat = () => {
               />
               <MdEmojiEmotions
                 onClick={() => setOpen(true)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-pink-500 text-xl cursor-pointer"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500 text-xl cursor-pointer"
               />
             </div>
             <CiImageOn
-              className="text-4xl text-pink-500 cursor-pointer hover:text-pink-600"
+              className="text-4xl text-red-500 cursor-pointer hover:text-red-600"
               onClick={() => imageRef.current.click()}
             />
             <button
-              className="ml-3 px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+              className="ml-3 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
               onClick={handleSendMessage}
             >
               Send

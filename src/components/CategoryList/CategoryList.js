@@ -26,7 +26,7 @@ const CategoryList = () => {
                   <img src={item?.productImage[0]} alt={item?.category} className='h-full object-contain mix-blend-multiply transition-transform duration-300 transform hover:scale-110' />
                 </div>
                 <p className='text-center text-sm md:text-base capitalize mt-2 p-2 truncate'>{item?.category}</p>
-                <div className='text-pink-600 text-center text-sm md:text-base capitalize mt-4'>16 products</div>
+                <div className='text-red-600 text-center text-sm md:text-base capitalize mt-4'>16 products</div>
               </Link>
             )
           })

@@ -48,19 +48,19 @@ const Countdown = ({ targetDate }) => {
             <div className='flex items-center justify-center flex-wrap'>
               <span className='text-xl md:text-xl lg:text-xxl xl:text-xl mr-2'>END LATER</span>
               <div className='flex items-center'>
-                <div className=' w-16  md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-pink-500 p-4 flex flex-col items-center justify-center'>
+                <div className=' w-16  md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-red-500 p-4 flex flex-col items-center justify-center'>
                   <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold'>{addLeadingZeros(days)}</span>
                   <div className='font-light text-slate-500 text-xs md:text-sm lg:text-base xl:text-lg'>Days</div>
                 </div>
-                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-pink-500 p-4 flex flex-col items-center justify-center'>
+                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-red-500 p-4 flex flex-col items-center justify-center'>
                   <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold'>{addLeadingZeros(hours)}</span>
                   <div className='font-light text-slate-500 text-xs md:text-sm lg:text-base xl:text-lg'>Hours</div>
                 </div>
-                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-pink-500 p-4 flex flex-col items-center justify-center'>
+                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-red-500 p-4 flex flex-col items-center justify-center'>
                   <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold'>{addLeadingZeros(minutes)}</span>
                   <div className='font-light text-slate-500 text-xs md:text-sm lg:text-base xl:text-lg'>Minutes</div>
                 </div>
-                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-pink-500 p-4 flex flex-col items-center justify-center'>
+                <div className=' w-16 md:w-24 lg:w-24 xl:w-24 h-20 md:h-24 lg:h-24 xl:h-24 mx-1 rounded-xl border-2 border-red-500 p-4 flex flex-col items-center justify-center'>
                   <span className='text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold'>{addLeadingZeros(seconds)}</span>
                   <div className='font-light text-slate-500 text-xs md:text-sm lg:text-base xl:text-lg'>Seconds</div>
                 </div>

@@ -39,13 +39,13 @@ const Navbar = () => {
               </div>
               <div>
                 <ul className='social flex justify-around gap-4 ml-6'>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Home</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>About</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Work Process</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Testimonials</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Pricing Tables</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Blog Entries</li>
-                  <li className='cursor-pointer text-lg ml-1 text-pink-400 hover:text-pink-600'>Contact Us</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Home</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>About</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Work Process</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Testimonials</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Pricing Tables</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Blog Entries</li>
+                  <li className='cursor-pointer text-lg ml-1 text-red-400 hover:text-red-600'>Contact Us</li>
                 </ul>
                 <div>
                   <Dropdown

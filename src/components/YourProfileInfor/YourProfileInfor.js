@@ -28,7 +28,7 @@ const YourProfileInfor = ({ data }) => {
         </span>
         <span> LTQ</span>
       </div>
-      <div className='w-[7rem] h-[2rem] mt-[6rem] self-end text-sm font-thin text-pink-400'>
+      <div className='w-[7rem] h-[2rem] mt-[6rem] self-end text-sm font-thin text-red-400'>
         {data.name}
       </div>
     </div>

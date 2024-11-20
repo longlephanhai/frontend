@@ -81,14 +81,14 @@ const PageCalendar = () => {
 
   return (
     <div className='p-4 px-5'>
-      <div className='bg-pink-400 opacity-80 rounded-md p-3'>
+      <div className='bg-red-400 opacity-80 rounded-md p-3'>
         <p className='font-medium text-lg text-white'>Calendar</p>
         <div className='flex flex-wrap justify-between items-center'>
           <div className='flex gap-2 flex-wrap'>
             <p className='text-white'>Dashboard</p>
             <p className='text-white'>Calendar</p>
           </div>
-          <button className='text-white bg-pink-600 p-2 rounded-lg hover:bg-pink-800 mt-2 md:mt-0' onClick={showModal}>Add Event</button>
+          <button className='text-white bg-red-600 p-2 rounded-lg hover:bg-red-800 mt-2 md:mt-0' onClick={showModal}>Add Event</button>
         </div>
       </div>
       <Calendar cellRender={cellRender} className="p-3" />

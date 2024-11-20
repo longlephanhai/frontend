@@ -58,7 +58,7 @@ const Request = () => {
                 {!buttonStates[user?._id] ? (
                   <button className='bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 transition duration-200' onClick={() => handleOnCancel(user?._id)}>Cancel</button>
                 ) : (
-                  <button className='bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700 transition duration-200' onClick={() => handleAdd(user?._id)}>Add Friend</button>
+                  <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAdd(user?._id)}>Add Friend</button>
                 )}
               </div>
             </div>

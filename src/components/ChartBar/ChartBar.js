@@ -55,7 +55,7 @@ const ChartBar = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar label={{ position: 'top' }} dataKey="Acitve" fill="#FB6A9A" activeBar={<Rectangle fill="pink" stroke="pink" />} />
+            <Bar label={{ position: 'top' }} dataKey="Acitve" fill="#FB6A9A" activeBar={<Rectangle fill="red" stroke="red" />} />
           </BarChart>
         </ResponsiveContainer>
       </div>

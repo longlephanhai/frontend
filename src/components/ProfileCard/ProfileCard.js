@@ -40,7 +40,7 @@ const ProfileCard = () => {
             <span className='font-bold'>6,890</span>
             <spann className='text-slate-400 text-[13px]'>Followings</spann>
           </div>
-          <div className='h-[150%] border-l-[2px_solid] border-pink-400'></div>
+          <div className='h-[150%] border-l-[2px_solid] border-red-400'></div>
           <div className='flex flex-col gap-[0.4rem] items-center justify-center'>
             <span className='font-bold'>1</span>
             <span className='text-slate-400 text-[13px]'>Followers</span>
@@ -59,7 +59,7 @@ const ProfileCard = () => {
         </div>
         <hr className='w-[85%] border-[2px_solid] border-slate-400' />
       </div>
-      {link.pathname !== '/social' ? '' : <span className='font-bold text-pink-600 mb-4 cursor-pointer self-center' onClick={handleOnClick}>
+      {link.pathname !== '/social' ? '' : <span className='font-bold text-red-600 mb-4 cursor-pointer self-center' onClick={handleOnClick}>
         My Profile
       </span>}
     </div>

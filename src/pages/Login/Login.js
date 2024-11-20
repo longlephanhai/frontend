@@ -79,7 +79,7 @@ const Login = () => {
                 xl: 80,
                 xxl: 100,
               }}
-              icon={<RxAvatar color='pink' className='bg-pink-600 w-full h-full ' />}
+              icon={<RxAvatar color='red' className='bg-red-600 w-full h-full ' />}
             />
           </div>
 
@@ -93,7 +93,7 @@ const Login = () => {
                 name='email'
                 value={data.email}
                 onChange={handleOnChange}
-                className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500'
+                className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
               />
             </div>
 
@@ -107,7 +107,7 @@ const Login = () => {
                   value={data.password}
                   name='password'
                   onChange={handleOnChange}
-                  className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500'
+                  className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
                 />
                 <div
                   className='absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer'
@@ -118,26 +118,26 @@ const Login = () => {
               </div>
               <NavLink
                 to={'/forgot-password'}
-                className='block text-sm text-right mt-1 text-pink-600 hover:text-pink-700'
+                className='block text-sm text-right mt-1 text-red-600 hover:text-red-700'
               >
                 Forgot password
               </NavLink>
             </div>
 
-            <button className='bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
+            <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
           </form>
 
           <div className='mt-6 text-center flex flex-col justify-center items-center'>
             <p className='text-sm text-gray-500'>or login with Google</p>
             <button
               onClick={() => googleLogin()}
-              className='mt-2 w-12 h-12 border border-pink-400 rounded-full flex items-center justify-center hover:border-pink-600'
+              className='mt-2 w-12 h-12 border border-red-400 rounded-full flex items-center justify-center hover:border-red-600'
             >
               <img src={googleLogo} alt='Google Sign In' className='items-center rounded-full' />
             </button>
           </div>
 
-          <p className='mt-5 text-sm text-center'>Don't have an account? <Link to={'/sign-up'} className='text-pink-600 hover:text-pink-700'>Sign Up</Link></p>
+          <p className='mt-5 text-sm text-center'>Don't have an account? <Link to={'/sign-up'} className='text-red-600 hover:text-red-700'>Sign Up</Link></p>
         </div>
       </div>
     </section>

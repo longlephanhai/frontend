@@ -79,7 +79,7 @@ const NotFriend = () => {
             <div className='flex gap-2'>
               {!buttonStates[user?._id] ? (
                 <button
-                  className='bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700 transition duration-200'
+                  className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200'
                   onClick={() => handleAddFriend(user?._id)}
                 >
                   Add Friend

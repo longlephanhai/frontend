@@ -16,7 +16,7 @@ const AreaCard = () => {
                 <p className='font-semibold text-2xl'>$50,000</p>
                 <p className='pt-2 pl-2 text-green-500 text-sm font-medium'>+20%</p>
               </div>
-              <div className='bg-pink-600 p-2 rounded-lg -mt-4'>
+              <div className='bg-red-600 p-2 rounded-lg -mt-4'>
                 <CiDollar className='w-6 h-6 text-white font-medium' />
               </div>
             </div>
@@ -30,7 +30,7 @@ const AreaCard = () => {
                 <p className='font-semibold text-2xl'>20,300</p>
                 <p className='pt-2 pl-2 text-green-500 text-sm font-medium'>+20%</p>
               </div>
-              <div className='bg-pink-600 p-2 rounded-lg -mt-4'>
+              <div className='bg-red-600 p-2 rounded-lg -mt-4'>
                 <FaUserFriends className='w-6 h-6 text-white font-medium' />
               </div>
             </div>
@@ -44,7 +44,7 @@ const AreaCard = () => {
                 <p className='font-semibold text-2xl'>$50,000</p>
                 <p className='pt-2 pl-2 text-red-500 text-sm font-medium'>-20%</p>
               </div>
-              <div className='bg-pink-600 p-2 rounded-lg -mt-4'>
+              <div className='bg-red-600 p-2 rounded-lg -mt-4'>
                 <FaHeart className='w-6 h-6 text-white font-medium' />
               </div>
             </div>
@@ -58,7 +58,7 @@ const AreaCard = () => {
                 <p className='font-semibold text-2xl'>$10,000</p>
                 <p className='pt-2 pl-2 text-green-500 text-sm font-medium'>+10%</p>
               </div>
-              <div className='bg-pink-600 p-2 rounded-lg -mt-4'>
+              <div className='bg-red-600 p-2 rounded-lg -mt-4'>
                 <FaLock className='w-6 h-6 text-white font-medium' />
               </div>
             </div>

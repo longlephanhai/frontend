@@ -32,14 +32,14 @@ const Socical = () => {
     <div className='relative md:grid md:grid-cols-[18rem_auto_20rem] grid-cols-1 gap-4 m-1 flex flex-col'>
       <ProfileSide />
       <div className='flex mt-4 mx-4 justify-between md:hidden'>
-        <FaUsers className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/not-friend')} />
-        <FaUserFriends className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/friend')} />
-        <IoPersonAddSharp className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/request')} />
+        <FaUsers className='text-xl md:text-2xl hover:text-red-500 cursor-pointer' onClick={() => navigate('/not-friend')} />
+        <FaUserFriends className='text-xl md:text-2xl hover:text-red-500 cursor-pointer' onClick={() => navigate('/friend')} />
+        <IoPersonAddSharp className='text-xl md:text-2xl hover:text-red-500 cursor-pointer' onClick={() => navigate('/request')} />
         <div className='flex'>
-          <FaBell className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' onClick={() => navigate('/accept')} />
+          <FaBell className='text-xl md:text-2xl hover:text-red-500 cursor-pointer' onClick={() => navigate('/accept')} />
           <span>{length}</span>
         </div>
-        <FaCommentDots className='text-xl md:text-2xl hover:text-pink-500 cursor-pointer' />
+        <FaCommentDots className='text-xl md:text-2xl hover:text-red-500 cursor-pointer' />
       </div>
       <PostSide />
       <RightSide />

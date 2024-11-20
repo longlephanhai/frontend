@@ -88,11 +88,11 @@ const Accept = () => {
               <div className='flex gap-4'>
                 {!buttonStates2[user?._id] ? (
                   <div className=' flex gap-2'>
-                    <button className='bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700 transition duration-200' onClick={() => handleAcpt(user?._id)}>Confirm</button>
+                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAcpt(user?._id)}>Confirm</button>
                   </div>
                 ) : (
                   <div>
-                    <button className='bg-pink-600 text-white px-3 py-1 rounded-full text-sm hover:bg-pink-700 transition duration-200' disabled >Confirmed</button>
+                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' disabled >Confirmed</button>
                   </div>
                 )}
                 {!buttonStates1[user?._id] ? (

@@ -157,17 +157,17 @@ const Header = () => {
 
           {/* Navigation Links */}
           <nav className='hidden lg:flex items-center space-x-4'>
-            <a href='#' className='text-pink-600 hover:text-pink-900'>Home</a>
-            <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
-            <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
-            <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
-            <Link to='/chat' className='text-pink-600 hover:text-pink-900'>Chat</Link>
-            <Link to={"/social"} className='text-pink-600 hover:text-pink-900'>Social Page</Link>
+            <a href='#' className='text-red-600 hover:text-red-900'>Home</a>
+            <a href='#category' className='text-red-600 hover:text-red-900'>Category</a>
+            <a href='#products' className='text-red-600 hover:text-red-900'>Products</a>
+            <a href='#contact' className='text-red-600 hover:text-red-900'>Contact</a>
+            <Link to='/chat' className='text-red-600 hover:text-red-900'>Chat</Link>
+            <Link to={"/social"} className='text-red-600 hover:text-red-900'>Social Page</Link>
           </nav>
 
           <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow-md pl-1'>
             <input onChange={handleSearch} value={search} type='text' placeholder='search product here..' className='w-full outline-none' />
-            <div className='text-lg min-w-[50px] h-8 bg-pink-600 flex items-center justify-center rounded-r-full text-white'>
+            <div className='text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white'>
               <GrSearch />
             </div>
           </div>
@@ -199,7 +199,7 @@ const Header = () => {
             {(user?._id || token) && (
               <Link to={'/cart'} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className='text-2xl relative'>
                 <span><FaShoppingCart /></span>
-                <div className='bg-pink-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
+                <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
                   <p className='text-sm'>{context?.cartProduct}</p>
                 </div>
               </Link>
@@ -208,7 +208,7 @@ const Header = () => {
               <div>
                 <button onClick={showDrawer} className='text-2xl relative flex items-center' >
                   <FaHeart />
-                  <div className='bg-pink-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
+                  <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
                     <p className='text-sm'>{context?.count}</p>
                   </div>
                 </button>
@@ -244,14 +244,14 @@ const Header = () => {
 
             <div>
               {user?._id || token ? (
-                <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-pink-600 hover:bg-pink-700'>Logout</button>
+                <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Logout</button>
               ) : (
-                <Link to={'/login'} className='px-3 py-1 rounded-full text-white bg-pink-600 hover:bg-pink-700'>Login</Link>
+                <Link to={'/login'} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
               )}
             </div>
           </div>
           <div className='lg:hidden'>
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className='text-pink-600'>
+            <button onClick={() => setDropdownOpen(!dropdownOpen)} className='text-red-600'>
               <FaBars />
             </button>
           </div>
@@ -262,12 +262,12 @@ const Header = () => {
           dropdownOpen && (
             <div className='lg:hidden bg-white shadow-md'>
               <nav className='flex flex-col p-4 space-y-2 items-center'>
-                <a href='#' className='text-pink-600 hover:text-pink-900'>Home</a>
-                <a href='#category' className='text-pink-600 hover:text-pink-900'>Category</a>
-                <a href='#products' className='text-pink-600 hover:text-pink-900'>Products</a>
-                <a href='#contact' className='text-pink-600 hover:text-pink-900'>Contact</a>
-                <Link to='/chat' className='text-pink-600 hover:text-pink-900'>Chat</Link>
-                <Link to='/social' className='text-pink-600 hover:text-pink-900'>Social Page</Link>
+                <a href='#' className='text-red-600 hover:text-red-900'>Home</a>
+                <a href='#category' className='text-red-600 hover:text-red-900'>Category</a>
+                <a href='#products' className='text-red-600 hover:text-red-900'>Products</a>
+                <a href='#contact' className='text-red-600 hover:text-red-900'>Contact</a>
+                <Link to='/chat' className='text-red-600 hover:text-red-900'>Chat</Link>
+                <Link to='/social' className='text-red-600 hover:text-red-900'>Social Page</Link>
               </nav>
             </div>
           )

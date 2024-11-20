@@ -15,7 +15,7 @@ const Footer = () => {
     <AudioOutlined
       style={{
         fontSize: 16,
-        color: '#DB2777',
+        color: 'red',
       }}
     />
   );
@@ -36,7 +36,7 @@ const Footer = () => {
 
   return (
     <footer id='contact'>
-      <div className='bg-pink-500'>
+      <div className='bg-red-500'>
         <div className='footer-head w-full py-3 container mx-auto flex flex-col md:flex-row justify-between items-center'>
           <div className='footer-social flex text-white gap-4 items-center text-3xl cursor-pointer'>
             <FaFacebook />
@@ -65,7 +65,7 @@ const Footer = () => {
       <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4'>
         <div>
           <button
-            className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='w-full py-2 text-left text-xl font-medium text-red-500 md:text-xl md:font-medium md:text-red-500'
           // onClick={() => toggleDropdown('address')}
           >
             Address
@@ -73,26 +73,26 @@ const Footer = () => {
           <ul className={`gap-3 overflow-hidden transition-all duration-300  md:max-h-none`}>
             <Link to={'/'}><img className='cursor-pointer' width={90} height={50} src={logo} alt='' /></Link>
             <li className='flex gap-2 p-1'>
-              <RiMapPin2Fill className='text-pink-400 text-2xl' />
-              <p className='text-sm font-medium cursor-pointer hover:text-pink-400'>Thanh Khuê, Ngũ Hành Sơn, Đà Nẵng</p>
+              <RiMapPin2Fill className='text-red-400 text-2xl' />
+              <p className='text-sm font-medium cursor-pointer hover:text-red-400'>Thanh Khuê, Ngũ Hành Sơn, Đà Nẵng</p>
             </li>
             <li className='flex gap-2 p-1'>
-              <MdOutlineEmail className='text-pink-400 text-2xl' />
-              <p className='text-sm font-medium cursor-pointer hover:text-pink-400'>support@gmail.com</p>
+              <MdOutlineEmail className='text-red-400 text-2xl' />
+              <p className='text-sm font-medium cursor-pointer hover:text-red-400'>support@gmail.com</p>
             </li>
             <li className='flex gap-2 p-1'>
-              <FaPhoneAlt className='text-pink-400 text-2xl' />
-              <p className='text-sm font-medium cursor-pointer hover:text-pink-400'>1800 9000</p>
+              <FaPhoneAlt className='text-red-400 text-2xl' />
+              <p className='text-sm font-medium cursor-pointer hover:text-red-400'>1800 9000</p>
             </li>
             <li className='flex gap-2 p-1'>
-              <PiMapPinAreaFill className='text-pink-400 text-2xl' />
-              <p className='text-sm font-medium cursor-pointer hover:text-pink-400'>Shop System</p>
+              <PiMapPinAreaFill className='text-red-400 text-2xl' />
+              <p className='text-sm font-medium cursor-pointer hover:text-red-400'>Shop System</p>
             </li>
           </ul>
         </div>
         <div>
           <button
-            className='flex items-center w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='flex items-center w-full py-2 text-left text-xl font-medium text-red-500 md:text-xl md:font-medium md:text-red-500'
             onClick={() => toggleDropdown('customerSupport')}
           >
             Customer Support
@@ -100,18 +100,18 @@ const Footer = () => {
             <IoMdArrowDropdown className={`ml-2 ${isOpen.customerSupport ? 'block' : 'hidden'} block md:hidden`} />
           </button>
           <ul className={`flex flex-col gap-3 overflow-hidden transition-all duration-200 ${isOpen.customerSupport ? 'max-h-screen' : 'max-h-0'} md:max-h-none`}>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Home Page</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Introduce</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Product</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Contact</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>News</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Cart</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Search</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Home Page</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Introduce</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Product</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Contact</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>News</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Cart</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Search</li>
           </ul>
         </div>
         <div>
           <button
-            className='flex items-center w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='flex items-center w-full py-2 text-left text-xl font-medium text-red-500 md:text-xl md:font-medium md:text-red-500'
             onClick={() => toggleDropdown('policy')}
           >
             Policy
@@ -119,27 +119,27 @@ const Footer = () => {
             <IoMdArrowDropdown className={`ml-2 ${isOpen.policy ? 'block' : 'hidden'} block md:hidden`} />
           </button>
           <ul className={`flex flex-col gap-3 overflow-hidden transition-all duration-200 ${isOpen.policy ? 'max-h-screen' : 'max-h-0'} md:max-h-none`}>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Home Page</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Introduce</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Product</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Contact</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>News</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Cart</li>
-            <li className='text-sm font-medium cursor-pointer hover:text-pink-400'>Search</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Home Page</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Introduce</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Product</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Contact</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>News</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Cart</li>
+            <li className='text-sm font-medium cursor-pointer hover:text-red-400'>Search</li>
           </ul>
         </div>
         <div>
           <button
-            className='w-full py-2 text-left text-xl font-medium text-pink-500 md:text-xl md:font-medium md:text-pink-500'
+            className='w-full py-2 text-left text-xl font-medium text-red-500 md:text-xl md:font-medium md:text-red-500'
           >
             Opening Times
           </button>
           <div className={`overflow-hidden transition-all duration-300  md:max-h-none`}>
             <p className='font-semibold text-sm mb-3'>From 9:00 - 21:30 every day of the week (including holidays and New Year).</p>
-            <p className='text-md font-medium text-pink-500 mb-1'>COMMENTS AND COMPLAINTS</p>
+            <p className='text-md font-medium text-red-500 mb-1'>COMMENTS AND COMPLAINTS</p>
             <div className='flex gap-2 p-1'>
-              <FaPhoneAlt className='text-pink-400 text-2xl' />
-              <p className='text-sm font-medium cursor-pointer hover:text-pink-400'>1900 8000</p>
+              <FaPhoneAlt className='text-red-400 text-2xl' />
+              <p className='text-sm font-medium cursor-pointer hover:text-red-400'>1900 8000</p>
             </div>
           </div>
         </div>

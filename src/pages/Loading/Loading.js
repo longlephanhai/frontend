@@ -17,9 +17,9 @@ const Loading = () => {
     justifyContent: "center",
   };
   return (
-    <div className='bg-pink-400 h-screen flex justify-center items-center'>
+    <div className='bg-red-400 h-screen flex justify-center items-center'>
       <RingLoader
-        color="pink"
+        color="red"
         loading={loading}
         cssOverride={override}
         size={300}

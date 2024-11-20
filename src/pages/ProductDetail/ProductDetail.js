@@ -67,7 +67,6 @@ const ProductDetail = () => {
   return (
     <div className='container mx-auto p-4'>
       <div className='min-h-[200px] flex flex-col lg:flex-row gap-4'>
-        {/* product image */}
         <div className='h-96 flex flex-col lg:flex-row-reverse gap-4'>
           <div className='h-[300px] w-[300px] lg:h-96 lg:w-96 bg-slate-200 relative p-2'>
             <img src={activeImage} className='h-full w-full object-scale-down mix-blend-multiply' alt='' />
@@ -105,14 +104,14 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* product details */}
+
         {
 
           <div className='flex flex-col gap-1'>
-            <p className='bg-pink-200 text-pink-600 px-2 rounded-full inline-block w-fit'> {data?.brandName}</p>
+            <p className='bg-red-200 text-red-600 px-2 rounded-full inline-block w-fit'> {data?.brandName}</p>
             <h2 className='text-2xl lg:text-4xl font-medium'>{data?.productName}</h2>
             <p className='capitalize text-slate-400'>{data?.category}</p>
-            <div className='text-pink-600 flex items-center gap-1'>
+            <div className='text-red-600 flex items-center gap-1'>
               <FaStar />
               <FaStar />
               <FaStar />
@@ -121,13 +120,13 @@ const ProductDetail = () => {
             </div>
 
             <div className='flex items-center gap-2 text-2xl lg:text-3xl font-medium my-1'>
-              <p className='text-pink-600'>{displayUSDCurrency(data?.sellingPrice)}</p>
+              <p className='text-red-600'>{displayUSDCurrency(data?.sellingPrice)}</p>
               <p className='line-through text-slate-400'>{displayUSDCurrency(data?.price)}</p>
             </div>
 
             <div className='flex items-center gap-3 my-2'>
-              <button className='border-2 border-pink-600 rounded px-3 py-1 min-w-[120px] text-pink-600 font-medium hover:bg-pink-600 hover:text-white' onClick={(e) => handlePayment(e, data._id)}>Buy</button>
-              <button className='border-2 border-pink-600 rounded px-3 py-1 min-w-[120px] font-medium text-white bg-pink-600 hover:text-pink-600 hover:bg-white' onClick={(e) => handleAddToCart(e, data._id)}>Add To Cart</button>
+              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e) => handlePayment(e, data._id)}>Buy</button>
+              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] font-medium text-white bg-red-600 hover:text-red-600 hover:bg-white' onClick={(e) => handleAddToCart(e, data._id)}>Add To Cart</button>
             </div>
 
             <div>
@@ -142,7 +141,7 @@ const ProductDetail = () => {
         <div className="my-4">
           <button
             onClick={toggleReviews}
-            className="flex items-center gap-1 bg-pink-500 text-white px-3 py-1 rounded-lg hover:bg-pink-600 transition duration-300"
+            className="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-300"
           >
             {showReviews ? <IoIosArrowDown /> : <IoIosArrowUp />}
             <span>{showReviews ? 'Hide Reviews' : 'Show Reviews'}</span>

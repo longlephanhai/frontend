@@ -46,13 +46,13 @@ const OrderDetail = () => {
               <div className="flex-grow">
                 <h2 className="text-lg lg:text-2xl text-ellipsis line-clamp-1">{item.productName}</h2>
                 <div className="flex items-center justify-between">
-                  <div className="text-pink-600 font-medium text-lg">
+                  <div className="text-red-600 font-medium text-lg">
                     {displayUSDCurrency(item.price)}
                   </div>
                   <div className="text-slate-600 font-semibold text-lg">Quantity: {item.quantity}</div>
                 </div>
               </div>
-              <button className="mt-2 absolute bottom-2 right-1 w-32 bg-pink-600 text-white py-2 px-4 rounded-lg hover:bg-pink-700 transition duration-300"
+              <button className="mt-2 absolute bottom-2 right-1 w-32 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300"
                 onClick={() => handleClick(item.productId)}
               >
                 Repurchase

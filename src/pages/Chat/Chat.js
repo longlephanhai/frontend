@@ -139,7 +139,7 @@ const Chat = () => {
     <div className="flex flex-col h-[85vh] max-w-3xl mx-auto border border-gray-200 rounded-lg shadow-lg overflow-hidden m-4 ">
       {
         admin && (
-          <div className='flex gap-2 p-2 items-center justify-start bg-pink-400'>
+          <div className='flex gap-2 p-2 items-center justify-start bg-red-400'>
             <img src={admin.profilePic} alt='' className='w-[3rem] h-[3rem] rounded-full object-cover' />
             <div>
               <div className='text-white'>
@@ -159,7 +159,7 @@ const Chat = () => {
           >
             <div className='flex flex-col'>
               {
-                msg.content ? <p className={`p-1 py-1 px-2 ${msg.userId === user._id ? 'bg-pink-500' : 'bg-slate-200'}  rounded-2xl`}>{msg.content}</p> : ''
+                msg.content ? <p className={`p-1 py-1 px-2 ${msg.userId === user._id ? 'bg-red-500' : 'bg-slate-200'}  rounded-2xl`}>{msg.content}</p> : ''
               }
               {
                 msg.image ?
@@ -199,7 +199,7 @@ const Chat = () => {
           }
           <input
             type="text"
-            className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 pl-10"
+            className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 pl-10"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyUp={handleOnKeyUP}
@@ -207,12 +207,12 @@ const Chat = () => {
           />
           <MdEmojiEmotions
             onClick={() => setOpen(true)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-pink-500 text-xl cursor-pointer" />
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500 text-xl cursor-pointer" />
         </div>
-        <CiImageOn className="text-4xl text-pink-500 cursor-pointer hover:text-pink-600"
+        <CiImageOn className="text-4xl text-red-500 cursor-pointer hover:text-red-600"
           onClick={() => imageRef.current.click()} />
         <button
-          className="ml-3 px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          className="ml-3 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
           onClick={handleSendMessage}
         >
           Send

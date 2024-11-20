@@ -32,7 +32,7 @@ const FollowersCard = () => {
                       <span className='font-light tracking-tighter'>@{item.name}</span>
                     </div>
                   </div>
-                  <button className='flex items-center justify-center text-white rounded-lg bg-pink-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-pink-500 hover:bg-transparent hover:border-pink-600 hover:border-[1px]'>Follow</button>
+                  <button className='flex items-center justify-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600 hover:border-[1px]'>Follow</button>
                 </div>
               ) : (
                 <FaCircleUser />

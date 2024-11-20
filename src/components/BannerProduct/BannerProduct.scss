@@ -1,6 +1,6 @@
 .swiper-button-next,
 .swiper-button-prev {
-    color: pink;
+    color: red;
     background-color: white;
     border-radius: 50%;
     padding: 10px;
@@ -22,11 +22,11 @@
 
 /* Custom styles for pagination bullets */
 .swiper-pagination-bullet {
-    background: pink;
+    background: red;
     opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
     background: #ff69b4;
-    /* A darker shade of pink for the active bullet */
+    /* A darker shade of red for the active bullet */
 }

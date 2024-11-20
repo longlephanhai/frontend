@@ -111,19 +111,19 @@ const Cart = () => {
                   </div>
                   <div className='px-4 py-2 relative'>
                     {/* delete Product */}
-                    <div onClick={() => deleteCart(item?._id)} className='absolute right-0 text-pink-600 rounded-full p-2 hover:bg-pink-600 hover:text-white cursor-pointer'>
+                    <div onClick={() => deleteCart(item?._id)} className='absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer'>
                       <MdDelete />
                     </div>
                     <h2 className='text-lg lg:text-2xl text-ellipsis line-clamp-1'>{item?.productId?.productName}</h2>
                     <p className='capitalize text-slate-500'>{item?.productId?.category}</p>
                     <div className='flex items-center justify-between'>
-                      <p className='text-pink-600 font-medium text-lg'>{displayUSDCurrency(item?.productId.sellingPrice)}</p>
+                      <p className='text-red-600 font-medium text-lg'>{displayUSDCurrency(item?.productId.sellingPrice)}</p>
                       <p className='text-slate-600 font-senibold text-lg'>{displayUSDCurrency(item?.productId.sellingPrice * item?.quantity)}</p>
                     </div>
                     <div className='flex items-center gap-3 mt-1'>
-                      <button className='border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white w-6 h-6 flex justify-center items-center rounded-full' onClick={() => decreaseQty(item?._id, item.quantity)}>-</button>
+                      <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded-full' onClick={() => decreaseQty(item?._id, item.quantity)}>-</button>
                       <span>{item?.quantity}</span>
-                      <button className='border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white w-6 h-6 flex justify-center items-center rounded-full' onClick={() => increaseQty(item?._id, item.quantity)}>+</button>
+                      <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded-full' onClick={() => increaseQty(item?._id, item.quantity)}>+</button>
                     </div>
                   </div>
                 </div>
@@ -134,30 +134,30 @@ const Cart = () => {
         </div>
 
         {/* total product */}
-          {data.length !== 0 && (
-            <div className="mt-6  pt-2 lg:mt-0 w-full max-w-sm">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Summary</h2>
-          
-                <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
-                  <p className="text-lg text-gray-700">Quantity:</p>
-                  <p className="text-lg font-bold text-pink-600">{totalQuantity}</p>
-                </div>
-          
-                <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
-                  <p className="text-lg text-gray-700">Total Price:</p>
-                  <p className="text-lg font-bold text-pink-600">{displayUSDCurrency(totalPrice)}</p>
-                </div>
-          
-                <button
-                  onClick={() => navigate('/payment')}
-                  className="mt-4 bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 transition-colors"
-                >
-                  Proceed to Payment
-                </button>
+        {data.length !== 0 && (
+          <div className="mt-6  pt-2 lg:mt-0 w-full max-w-sm">
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Summary</h2>
+
+              <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
+                <p className="text-lg text-gray-700">Quantity:</p>
+                <p className="text-lg font-bold text-red-600">{totalQuantity}</p>
               </div>
+
+              <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
+                <p className="text-lg text-gray-700">Total Price:</p>
+                <p className="text-lg font-bold text-red-600">{displayUSDCurrency(totalPrice)}</p>
+              </div>
+
+              <button
+                onClick={() => navigate('/payment')}
+                className="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors"
+              >
+                Proceed to Payment
+              </button>
             </div>
-          )}
+          </div>
+        )}
       </div>
 
     </div>

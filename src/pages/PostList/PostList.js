@@ -62,7 +62,7 @@ const PostList = () => {
     <div className='flex flex-col m-4 gap-4'>
       {
         data.map((item, index) => (
-          <div key={index} className='flex flex-col md:flex-row gap-4 border-[1px] border-pink-400 p-4 items-center justify-between flex-wrap'>
+          <div key={index} className='flex flex-col md:flex-row gap-4 border-[1px] border-red-400 p-4 items-center justify-between flex-wrap'>
             <div className='flex-shrink-0'>
               <img src={item?.img} alt='' className='w-[3rem] h-[3rem] object-cover' />
             </div>
@@ -79,7 +79,7 @@ const PostList = () => {
                 <p>{formatDate(item?.createdAt)}</p>
               </div>
             </div>
-            <div className='cursor-pointer m-4 text-pink-600' onClick={() => handleModal(item?._id)}>
+            <div className='cursor-pointer m-4 text-red-600' onClick={() => handleModal(item?._id)}>
               Check Posts
             </div>
             <div className='mt-4 md:mt-0' onClick={() => handleOnClick(item?._id, item?.accept)}>

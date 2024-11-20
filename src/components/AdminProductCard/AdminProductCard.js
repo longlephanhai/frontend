@@ -20,7 +20,7 @@ const AdminProductCard = ({ data, fetchdata }) => {
                 <h1 className='text-ellipsis line-clamp-2'>{data.productName}</h1>
                 <div>
                     <p className='font-semibold'>{displayINRCurrency(data.sellingPrice)}</p>
-                    <div className='w-fit ml-auto p-2 bg-pink-200 hover:bg-pink-600 rounded-full hover:text-white cursor-pointer'
+                    <div className='w-fit ml-auto p-2 bg-red-200 hover:bg-red-600 rounded-full hover:text-white cursor-pointer'
                         onClick={() => setEditProduct(true)}>
                         <MdEdit />
                     </div>

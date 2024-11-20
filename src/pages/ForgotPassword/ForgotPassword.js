@@ -42,7 +42,7 @@ const ForgotPassword = () => {
           </div>
           <button
             type='submit'
-            className='w-full py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 transition-colors'
+            className='w-full py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors'
           >
             Reset Password
           </button>

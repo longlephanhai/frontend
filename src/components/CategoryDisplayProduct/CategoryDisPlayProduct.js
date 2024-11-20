@@ -38,10 +38,10 @@ const CategoryDisplayProduct = ({ category, heading }) => {
                   <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{item?.productName}</h2>
                   <p className='capitalize text-slate-500'>{item?.category}</p>
                   <div className='flex gap-3'>
-                    <p className='text-pink-600 font-medium'>{displayUSDCurrency(item?.sellingPrice)}</p>
+                    <p className='text-red-600 font-medium'>{displayUSDCurrency(item?.sellingPrice)}</p>
                     <p className='text-slate-500 line-through'>{displayUSDCurrency(item?.price)}</p>
                   </div>
-                  <button className='text-sm bg-pink-600 hover:bg-pink-700 text-white px-2 py-0.5 rounded-full' onClick={(e) => handleAddToCart(e, item?._id)} >Add to Cart</button>
+                  <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-2 py-0.5 rounded-full' onClick={(e) => handleAddToCart(e, item?._id)} >Add to Cart</button>
                 </div>
               </Link>
             )
