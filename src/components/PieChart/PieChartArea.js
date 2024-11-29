@@ -2,14 +2,14 @@ import React from 'react'
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts';
 const PieChartArea = () => {
   const data = [
-    { name: 'Blush', value: 320 },
-    { name: 'Facialoil', value: 370 },
-    { name: 'Facialoil-Cleanser', value: 332 },
-    { name: 'Lipstick', value: 134 },
-    { name: 'Perfume', value: 124 },
-    { name: 'Serum', value: 110 },
-    { name: 'Sunscreen', value: 240 },
-    { name: 'Toner', value: 232 },
+    { name: 'Khoa học', value: 320 },
+    { name: 'Lịch sử', value: 370 },
+    { name: 'Tiếng anh', value: 332 },
+    { name: 'Toán học', value: 134 },
+    { name: 'Truyện tranh', value: 124 },
+    { name: 'Văn học', value: 110 },
+    { name: 'Địa lý', value: 240 },
+    { name: 'Vật lý', value: 232 },
   ];
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#DB2777', '#00FEFE', '#FF0000', '#FE9E9B'];

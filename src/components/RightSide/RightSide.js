@@ -46,7 +46,7 @@ const RightSide = () => {
       </div>
       <TrendCard />
       <button className='md:flex items-center justify-center self-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-[3rem] w-[80%] md:w-[60%] lg:w-[40%] px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600 hover:border-[1px] hidden'>
-        Share
+        Chia sẻ
       </button>
     </div>
   )

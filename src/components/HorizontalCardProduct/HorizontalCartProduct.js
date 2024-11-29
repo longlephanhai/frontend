@@ -127,7 +127,7 @@ const HorizontalCartProduct = ({ category, heading,time }) => {
                     className='mt-2 text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full transition-colors'
                     onClick={(e) => handleAddToCart(e, item?._id)}
                   >
-                    Add to Cart
+                    Thêm vào giỏ hàng
                   </button>
                   <button
                     className='mt-2 text-sm bg-transparent  text-white px-2 py-2 rounded-full transition-colors flex items-center justify-center absolute right-2 top-1'

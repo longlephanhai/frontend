@@ -1,18 +1,17 @@
-import React, { useContext, useRef, useState } from 'react';
-// import loginIcons from '../../assest/assest/signin.gif'; // Sửa đường dẫn file
-import googleLogo from '../../assest/assest/idesign_logogg_1.webp'; // Thêm logo Google
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import Context from '../../context';
-import { useGoogleLogin } from '@react-oauth/google';
 import SummaryApi, { backendDomin } from '../../common';
 import { RxAvatar } from "react-icons/rx";
 import { Avatar } from 'antd';
 import io from 'socket.io-client';
+import Hooks from '../../components/hooks/Hooks';
 const Login = () => {
+  // local login
   const socketRef = useRef(null);
-
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState({
     email: "",
@@ -51,24 +50,31 @@ const Login = () => {
     }
   };
 
-  const handleGoogleSignInSuccess = async (response) => {
-    localStorage.setItem("token", response.clientId);
-    navigate('/');
-  };
+  // google login
+  const { handleGoogle, loading, error } = Hooks(
+    SummaryApi.loginGoogle.url
+  )
 
-  const handleGoogleSignInFailure = (error) => {
-    toast.error("Google Sign In failed. Please try again.");
-  };
+  useEffect(() => {
+    /* global google */
+    if (window.google) {
+      google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: handleGoogle,
+        auto_select: false
+      });
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: handleGoogleSignInSuccess,
-    onError: handleGoogleSignInFailure,
-  });
-
+      google.accounts.id.renderButton(document.getElementById("loginDiv"), {
+        theme: "outline",
+        // text: "signin_with",
+        shape: "circle",
+      });
+    }
+  }, []);
   return (
     <section id='login' className='flex justify-center items-center min-h-screen'>
       <div className='container p-4'>
-        <div className='bg-white p-4 max-w-md mx-auto rounded-md shadow-md'>
+        <div className='bg-white p-4 max-w-md mx-auto rounded-md shadow-md flex flex-col justify-center items-center'>
           <div className='w-20 h-20 mx-auto text-center'>
             <Avatar
               size={{
@@ -83,13 +89,13 @@ const Login = () => {
             />
           </div>
 
-          <form className='mt-6' onSubmit={handleSubmit}>
-            <div className='mb-4'>
+          <form className='mt-6 w-full' onSubmit={handleSubmit}>
+            <div className='mb-4 w-full'>
               <label htmlFor='email' className='block text-sm font-medium text-gray-700'>Email</label>
               <input
                 type='email'
                 id='email'
-                placeholder='Enter email'
+                placeholder='Nhập email'
                 name='email'
                 value={data.email}
                 onChange={handleOnChange}
@@ -98,12 +104,12 @@ const Login = () => {
             </div>
 
             <div className='mb-4'>
-              <label htmlFor='password' className='block text-sm font-medium text-gray-700'>Password</label>
+              <label htmlFor='password' className='block text-sm font-medium text-gray-700'>Mật khẩu</label>
               <div className='relative'>
                 <input
                   type={showPassword ? "text" : "password"}
                   id='password'
-                  placeholder='Enter password'
+                  placeholder='Nhập mật khẩu'
                   value={data.password}
                   name='password'
                   onChange={handleOnChange}
@@ -120,24 +126,16 @@ const Login = () => {
                 to={'/forgot-password'}
                 className='block text-sm text-right mt-1 text-red-600 hover:text-red-700'
               >
-                Forgot password
+                Quên mật khẩu
               </NavLink>
             </div>
 
-            <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
+            <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Đăng nhập</button>
           </form>
 
-          <div className='mt-6 text-center flex flex-col justify-center items-center'>
-            <p className='text-sm text-gray-500'>or login with Google</p>
-            <button
-              onClick={() => googleLogin()}
-              className='mt-2 w-12 h-12 border border-red-400 rounded-full flex items-center justify-center hover:border-red-600'
-            >
-              <img src={googleLogo} alt='Google Sign In' className='items-center rounded-full' />
-            </button>
-          </div>
+          <div id='loginDiv' className='mt-6 self-center '></div>
 
-          <p className='mt-5 text-sm text-center'>Don't have an account? <Link to={'/sign-up'} className='text-red-600 hover:text-red-700'>Sign Up</Link></p>
+          <p className='mt-5 text-sm text-center'>Không có tài khoản? <Link to={'/sign-up'} className='text-red-600 hover:text-red-700'>Đăng ký</Link></p>
         </div>
       </div>
     </section>

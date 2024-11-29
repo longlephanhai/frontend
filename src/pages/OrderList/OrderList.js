@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SummaryApi from '../../common';
 import box from '../../assest/assest/parcel_icon.png'
 import './OrderList.css'
+import displayVNDCurrency from '../../helpers/displayCurrency/displayCurrency';
 
 const OrderList = () => {
   const [data, setData] = useState([]);
@@ -72,10 +73,10 @@ const OrderList = () => {
                 <p className='order-item-phone'>{order.address.phone}</p>
               </div>
               <p>Items: {order.items.length}</p>
-              <p>${order.amount}</p>
+              <p>{displayVNDCurrency(order.amount)}</p>
               <p>{formatDate(order.createdAt)}</p>
               <select onChange={(e) => statusHandler(e, order._id)} value={order.status}>
-                <option value={'Cosmetic Processing'}>Cosmetic Processing</option>
+                <option value={'Cosmetic Processing'}>Processing</option>
                 <option value={'Delivery'}>Delivery</option>
                 <option value={'Received'}>Received</option>
               </select>

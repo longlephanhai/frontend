@@ -14,8 +14,8 @@ const CategoryList = () => {
   return (
     <div className='container mx-auto p-4'>
       <div className='flex flex-col justify-center items-center mb-3'>
-        <div className='text-2xl font-bold '>Popular Categories</div>
-        <div className='font-light'>Some of our popular categories include cosmetic</div>
+        <div className='text-2xl font-bold '>Thể loại phổ biến</div>
+        <div className='font-light'>Một số danh mục phổ biến của chúng tôi bao gồm sách</div>
       </div>
       <div className='flex items-center gap-4 justify-between overflow-scroll scrollbar-none hover:scrollbar-thin hover:scrollbar-thumb-rounded-full hover:scrollbar-thumb-gray-400'>
         {
@@ -26,7 +26,6 @@ const CategoryList = () => {
                   <img src={item?.productImage[0]} alt={item?.category} className='h-full object-contain mix-blend-multiply transition-transform duration-300 transform hover:scale-110' />
                 </div>
                 <p className='text-center text-sm md:text-base capitalize mt-2 p-2 truncate'>{item?.category}</p>
-                <div className='text-red-600 text-center text-sm md:text-base capitalize mt-4'>16 products</div>
               </Link>
             )
           })

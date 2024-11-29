@@ -49,7 +49,7 @@ const LogoSearch = () => {
           type='text'
           onChange={handleOnChange}
           value={search}
-          placeholder='#Search' />
+          placeholder='Tìm kiếm bạn bè' />
         <div className='flex items-center justify-center rounded-[5px]
          p-[5px] text-white hover:cursor-pointer bg-red-400
         '>

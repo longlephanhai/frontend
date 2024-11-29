@@ -125,12 +125,12 @@ const ProductDetail = () => {
             </div>
 
             <div className='flex items-center gap-3 my-2'>
-              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e) => handlePayment(e, data._id)}>Buy</button>
-              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] font-medium text-white bg-red-600 hover:text-red-600 hover:bg-white' onClick={(e) => handleAddToCart(e, data._id)}>Add To Cart</button>
+              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e) => handlePayment(e, data._id)}>Mua</button>
+              <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] font-medium text-white bg-red-600 hover:text-red-600 hover:bg-white' onClick={(e) => handleAddToCart(e, data._id)}>Thêm vào giỏ hàng</button>
             </div>
 
             <div>
-              <p className='text-slate-600 font-medium my-1'>Description :</p>
+              <p className='text-slate-600 font-medium my-1'>Miêu tả :</p>
               <p>{data?.description}</p>
             </div>
           </div>
@@ -144,7 +144,7 @@ const ProductDetail = () => {
             className="flex items-center gap-1 bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-300"
           >
             {showReviews ? <IoIosArrowDown /> : <IoIosArrowUp />}
-            <span>{showReviews ? 'Hide Reviews' : 'Show Reviews'}</span>
+            <span>{showReviews ? 'Ẩn đánh giá' : 'Hiển thị đánh giá'}</span>
           </button>
           {showReviews && (
             <div className="overflow-hidden transition-all duration-500 ease-in-out">
@@ -155,7 +155,7 @@ const ProductDetail = () => {
       </div>
       {
         data.category && (
-          <CategoryDisplayProduct category={data?.category} heading={"Recommended Product"} />
+          <CategoryDisplayProduct category={data?.category} heading={"Sản phẩm đề cử"} />
         )
       }
 

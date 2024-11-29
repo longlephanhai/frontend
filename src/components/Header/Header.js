@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import logo from '../../assest/assest/logoupdate.webp';
+import logo from '../../assest/assest/Remove-bg.ai_1732618552132.webp';
 import { GrSearch } from "react-icons/gr";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
@@ -14,8 +14,9 @@ import ROLE from '../../common/role';
 import Context from '../../context';
 import { FaBars, FaHeart } from "react-icons/fa";
 import { Drawer } from 'antd';
-import logomini from '../../assest/assest/logomini.webp'
+
 import io from 'socket.io-client';
+import displayVNDCurrency from '../../helpers/displayCurrency/displayCurrency';
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const Header = () => {
       toast.error(data.message);
     }
     localStorage.removeItem('token');
+    
   };
 
   const handleSearch = (e) => {
@@ -143,7 +145,7 @@ const Header = () => {
             </Link>
             <Link to={'/'}>
               <img
-                src={logomini}
+                src={logo}
                 alt='logomini'
                 width={50}
                 height={10}
@@ -157,16 +159,16 @@ const Header = () => {
 
           {/* Navigation Links */}
           <nav className='hidden lg:flex items-center space-x-4'>
-            <a href='#' className='text-red-600 hover:text-red-900'>Home</a>
-            <a href='#category' className='text-red-600 hover:text-red-900'>Category</a>
-            <a href='#products' className='text-red-600 hover:text-red-900'>Products</a>
-            <a href='#contact' className='text-red-600 hover:text-red-900'>Contact</a>
-            <Link to='/chat' className='text-red-600 hover:text-red-900'>Chat</Link>
-            <Link to={"/social"} className='text-red-600 hover:text-red-900'>Social Page</Link>
+            <a href='#' className='text-red-600 hover:text-red-900'>Trang chủ</a>
+            <a href='#category' className='text-red-600 hover:text-red-900'>Thể loại</a>
+            <a href='#products' className='text-red-600 hover:text-red-900'>Sản phẩm</a>
+            <a href='#contact' className='text-red-600 hover:text-red-900'>Liên hệ</a>
+            <Link to='/chat' className='text-red-600 hover:text-red-900'>Nhắn tin</Link>
+            <Link to={"/social"} className='text-red-600 hover:text-red-900'>Mạng xã hội</Link>
           </nav>
 
           <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow-md pl-1'>
-            <input onChange={handleSearch} value={search} type='text' placeholder='search product here..' className='w-full outline-none' />
+            <input onChange={handleSearch} value={search} type='text' placeholder='TÌm kiếm tại đây...' className='w-full outline-none' />
             <div className='text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white'>
               <GrSearch />
             </div>
@@ -187,10 +189,10 @@ const Header = () => {
                 <div className='absolute bg-white bottom-0 top-11 h-fit p-4 shadow-lg rounded'>
                   <nav>
                     {user?.role === ROLE.ADMIN && (
-                      <Link to={'/admin-panel/dashboard'} className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)}>Admin panel</Link>
+                      <Link to={'/admin-panel/dashboard'} className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)}>Trang quản trị</Link>
                     )}
                     <div>
-                      <Link to='/myorder' className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)} > My Orders</Link>
+                      <Link to='/myorder' className='whitespace-nowrap block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)} >Danh sách đơn hàng</Link>
                     </div>
                   </nav>
                 </div>
@@ -212,18 +214,18 @@ const Header = () => {
                     <p className='text-sm'>{context?.count}</p>
                   </div>
                 </button>
-                <Drawer title="Favorite Product" onClose={onClose} open={open}>
-                  {data.map((item, index) => (
+                <Drawer title="Sản phẩm yêu thích" onClose={onClose} open={open}>
+                  {data?.map((item, index) => (
                     <div key={index} className="border-b border-gray-200 pb-4 mb-4 relative">
-                      <Link to={`/product/${item.productId._id}`} className="flex items-center space-x-4 p-4">
-                        <img src={item.productId.productImage[0]} alt='' className="w-24 h-24 object-cover rounded-lg" />
+                      <Link to={`/product/${item?.productId?._id}`} className="flex items-center space-x-4 p-4">
+                        <img src={item?.productId?.productImage[0]} alt='' className="w-24 h-24 object-cover rounded-lg" />
                         <div className="flex-1">
-                          <p className="text-lg font-bold">{item.productId.productName}</p>
-                          <p className="text-sm text-gray-500">{item.productId.brandName}</p>
-                          <p className="text-sm text-gray-500">{item.productId.category}</p>
+                          <p className="text-lg font-bold">{item?.productId?.productName}</p>
+                          <p className="text-sm text-gray-500">{item?.productId?.brandName}</p>
+                          <p className="text-sm text-gray-500">{item?.productId?.category}</p>
                           <div className="flex justify-between mt-2">
-                            <p className="text-gray-700">Price: {item.productId.price}</p>
-                            <p className="text-red-500 font-bold">Selling Price: {item.productId.sellingPrice}</p>
+                            <p className="text-gray-700 line-through">Giá: {displayVNDCurrency(item?.productId?.price)}</p>
+                            <p className="text-red-500 font-bold">Giá bán: {displayVNDCurrency(item?.productId?.sellingPrice)}</p>
                           </div>
                         </div>
                       </Link>
@@ -244,9 +246,9 @@ const Header = () => {
 
             <div>
               {user?._id || token ? (
-                <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Logout</button>
+                <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Đăng xuất</button>
               ) : (
-                <Link to={'/login'} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
+                <Link to={'/login'} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Đăng nhập</Link>
               )}
             </div>
           </div>
@@ -262,12 +264,12 @@ const Header = () => {
           dropdownOpen && (
             <div className='lg:hidden bg-white shadow-md'>
               <nav className='flex flex-col p-4 space-y-2 items-center'>
-                <a href='#' className='text-red-600 hover:text-red-900'>Home</a>
-                <a href='#category' className='text-red-600 hover:text-red-900'>Category</a>
-                <a href='#products' className='text-red-600 hover:text-red-900'>Products</a>
-                <a href='#contact' className='text-red-600 hover:text-red-900'>Contact</a>
-                <Link to='/chat' className='text-red-600 hover:text-red-900'>Chat</Link>
-                <Link to='/social' className='text-red-600 hover:text-red-900'>Social Page</Link>
+                <a href='#' className='text-red-600 hover:text-red-900'>Trang chủ</a>
+                <a href='#category' className='text-red-600 hover:text-red-900'>Thể loại</a>
+                <a href='#products' className='text-red-600 hover:text-red-900'>Sản phẩm</a>
+                <a href='#contact' className='text-red-600 hover:text-red-900'>Liên hệ</a>
+                <Link to='/chat' className='text-red-600 hover:text-red-900'>Nhắn tin</Link>
+                <Link to='/social' className='text-red-600 hover:text-red-900'>Mạng xã hội</Link>
               </nav>
             </div>
           )

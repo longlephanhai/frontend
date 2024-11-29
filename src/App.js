@@ -13,7 +13,7 @@ import { setUserDetails } from './store/userSlice';
 import Loading from './pages/Loading/Loading';
 import { FloatButton } from 'antd';
 import { ToTopOutlined } from '@ant-design/icons';
-
+import 'leaflet/dist/leaflet.css';
 function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -63,7 +63,7 @@ function App() {
   return (
     <>
       <Context.Provider value={{
-        fetchUserDetails, //user detail fetch
+        fetchUserDetails, 
         cartProduct,
         fetchUserAddToCart,
         fetchUserFavorite,

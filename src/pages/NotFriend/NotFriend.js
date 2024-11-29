@@ -61,7 +61,7 @@ const NotFriend = () => {
   }, []);
   return (
     <div className='p-4'>
-      <p className='text-2xl font-semibold mb-4 text-center'>People You May Know</p>
+      <p className='text-2xl font-semibold mb-4 text-center'>Những người bạn có thể biết</p>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>
         {data?.map((user, index) => (
           <div key={index} className='bg-white shadow-md rounded-lg p-3 flex flex-col items-center'>
@@ -82,14 +82,14 @@ const NotFriend = () => {
                   className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200'
                   onClick={() => handleAddFriend(user?._id)}
                 >
-                  Add Friend
+                  Thêm bạn bè
                 </button>
               ) : (
                 <button
                   className='bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 transition duration-200'
                   onClick={() => handleCancel(user?._id)}
                 >
-                  Cancel
+                  Hủy
                 </button>
               )}
             </div>

@@ -49,20 +49,20 @@ const OrderDetail = () => {
                   <div className="text-red-600 font-medium text-lg">
                     {displayUSDCurrency(item.price)}
                   </div>
-                  <div className="text-slate-600 font-semibold text-lg">Quantity: {item.quantity}</div>
+                  <div className="text-slate-600 font-semibold text-lg">Số lượng: {item.quantity}</div>
                 </div>
               </div>
               <button className="mt-2 absolute bottom-2 right-1 w-32 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300"
                 onClick={() => handleClick(item.productId)}
               >
-                Repurchase
+                Mua lại
               </button>
             </div>
           </div>
         ))}
         <div className="mt-4 p-4 bg-green-100 border border-green-400 rounded text-green-700 text-center flex items-center justify-center">
-          <FaRegSmileWink style={{ marginRight: '8px' }} className="text-5xl md:text-2xl"/>
-          Thank you for your order! We hope you are satisfied with your product.
+          <FaRegSmileWink style={{ marginRight: '8px' }} className="text-5xl md:text-2xl" />
+          Cảm ơn bạn đã đặt hàng! Chúng tôi hy vọng bạn hài lòng với sản phẩm của mình.
         </div>
       </div>
     </div>

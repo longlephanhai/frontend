@@ -3,6 +3,7 @@ import SummaryApi from '../../common'
 import './MyOrder.scss'
 import box from '../../assest/assest/parcel_icon.png'
 import { useNavigate } from 'react-router-dom';
+import displayVNDCurrency from '../../helpers/displayCurrency/displayCurrency';
 const MyOrder = () => {
   const [data, setData] = useState([]);
   const fetchOrders = async () => {
@@ -42,11 +43,11 @@ const MyOrder = () => {
                     return item.productName + " x " + item.quantity + ", "
                   }
                 })}</p>
-                <p>${order.amount}</p>
-                <p>Items:{order.items.length}</p>
+                <p>{displayVNDCurrency(order.amount)}</p>
+                <p>Số lượng:{order.items.length}</p>
                 <p><span>&#x25cf;</span><b>{order.status}</b></p>
                 <button onClick={() => handleClick(order.items, order._id)} >
-                  Track orders
+                  Chi tiết
                 </button>
               </div>
             )

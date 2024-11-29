@@ -39,7 +39,7 @@ const Request = () => {
   // End chức năng hủy kết bạn
   return (
     <div className='p-4'>
-      <p className='text-2xl font-semibold mb-4 text-center'>Invitation Sent</p>
+      <p className='text-2xl font-semibold mb-4 text-center'>Lời mời đã gửi</p>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>
         {
           data.map((user, index) => (
@@ -56,9 +56,9 @@ const Request = () => {
               <div className='text-md font-medium mb-2'>{user.name}</div>
               <div className='flex gap-2'>
                 {!buttonStates[user?._id] ? (
-                  <button className='bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 transition duration-200' onClick={() => handleOnCancel(user?._id)}>Cancel</button>
+                  <button className='bg-green-600 text-white px-3 py-1 rounded-full text-sm hover:bg-green-700 transition duration-200' onClick={() => handleOnCancel(user?._id)}>Hủy</button>
                 ) : (
-                  <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAdd(user?._id)}>Add Friend</button>
+                  <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAdd(user?._id)}>THêm bạn bè</button>
                 )}
               </div>
             </div>

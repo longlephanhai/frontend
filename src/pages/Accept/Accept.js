@@ -69,7 +69,7 @@ const Accept = () => {
   }, []);
   return (
     <div className='p-4'>
-      <p className='text-2xl font-semibold mb-4 text-center'>Friend requests</p>
+      <p className='text-2xl font-semibold mb-4 text-center'>Yêu cầu kết bạn</p>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>
         {
           data?.map((user, index) => (
@@ -88,20 +88,20 @@ const Accept = () => {
               <div className='flex gap-4'>
                 {!buttonStates2[user?._id] ? (
                   <div className=' flex gap-2'>
-                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAcpt(user?._id)}>Confirm</button>
+                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' onClick={() => handleAcpt(user?._id)}>Châp nhận</button>
                   </div>
                 ) : (
                   <div>
-                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' disabled >Confirmed</button>
+                    <button className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200' disabled >Đã chấp nhận</button>
                   </div>
                 )}
                 {!buttonStates1[user?._id] ? (
                   <div className='gap-8'>
-                    <button className='bg-gray-600 text-white px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition duration-200' onClick={() => handleOnRefuse(user?._id)}>Delete</button>
+                    <button className='bg-gray-600 text-white px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition duration-200' onClick={() => handleOnRefuse(user?._id)}>Xóa</button>
                   </div>
                 ) : (
                   <div>
-                    <button className='bg-gray-600 text-white px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition duration-200' disabled >Deleted</button>
+                    <button className='bg-gray-600 text-white px-3 py-1 rounded-full text-sm hover:bg-gray-700 transition duration-200' disabled >Đã xóa</button>
                   </div>
                 )}
               </div>

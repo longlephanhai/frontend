@@ -118,7 +118,7 @@ const Post = ({ data: initialData, id }) => {
               className='text-gray-500 text-3xl cursor-pointer hover:text-gray-700 transition-colors duration-200' />
             <PiShareFatLight className='text-gray-500 text-3xl cursor-pointer hover:text-gray-700 transition-colors duration-200' />
           </div>
-          <span className='text-gray-500 text-sm'>{data.like} likes</span>
+          <span className='text-gray-500 text-sm'>{data.like} lượt thích</span>
         </div>
         <div className='mt-4'>
           <span className='font-semibold text-gray-800'>{data.name}</span>
@@ -156,14 +156,14 @@ const Post = ({ data: initialData, id }) => {
                     name='comment'
                     value={dataComment}
                     onChange={e => setDataComment(e.target.value)}
-                    placeholder='Add a comment...'
+                    placeholder='VIết bình luận...'
                     className='flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500'
                   />
                   <button
                     type='submit'
                     className='px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-200'
                   >
-                    Send
+                    Gửi
                   </button>
                 </form>
               </div>

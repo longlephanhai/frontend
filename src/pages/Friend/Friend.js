@@ -60,7 +60,7 @@ const Friend = () => {
 
   return (
     <div className='p-4'>
-      <p className='text-2xl font-semibold mb-4 text-center'>Friends List</p>
+      <p className='text-2xl font-semibold mb-4 text-center'>Danh sách bạn bè</p>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>
         {
           data?.map((friend, index) => (
@@ -79,7 +79,7 @@ const Friend = () => {
               <button
                 onClick={() => navigate(`/room-chat/${friend.roomChatId}`)}
                 className='bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700 transition duration-200'
-              >Send</button>
+              >Nhắn tin</button>
               <div className='absolute top-4 right-4'>
                 {friend.statusOnline === "online" ? (
                   <span className='inline-block w-3 h-3 bg-green-500 rounded-full' title='Online'></span>

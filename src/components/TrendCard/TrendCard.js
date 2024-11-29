@@ -21,13 +21,13 @@ const TrendCard = () => {
   ]
   return (
     <div className='md:flex md:flex-col gap-4 bg-white p-4 rounded-2xl pl-8 hidden'>
-      <h3>Trends for you</h3>
+      <h3>Xu hướng dành cho bạn</h3>
       {
         TrendData.map((item, index) => {
           return (
             <div className='flex flex-col gap-2'>
               <span className='font-bold'>#{item.name}</span>
-              <span className='text-[13px]'>{item.shares}k shares</span>
+              <span className='text-[13px]'>{item.shares}k lượt chia sẻ</span>
             </div>
           )
         })

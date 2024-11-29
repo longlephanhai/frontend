@@ -38,12 +38,12 @@ const ProfileCard = () => {
         <div className='flex gap-4 w-[80%] justify-around items-center'>
           <div className='flex flex-col gap-[0.4rem] items-center justify-center'>
             <span className='font-bold'>6,890</span>
-            <spann className='text-slate-400 text-[13px]'>Followings</spann>
+            <spann className='text-slate-400 text-[13px]'>Theo dõi</spann>
           </div>
           <div className='h-[150%] border-l-[2px_solid] border-red-400'></div>
           <div className='flex flex-col gap-[0.4rem] items-center justify-center'>
             <span className='font-bold'>1</span>
-            <span className='text-slate-400 text-[13px]'>Followers</span>
+            <span className='text-slate-400 text-[13px]'>Người theo dõi</span>
           </div>
           {profilePage && (
             <>
@@ -60,7 +60,7 @@ const ProfileCard = () => {
         <hr className='w-[85%] border-[2px_solid] border-slate-400' />
       </div>
       {link.pathname !== '/social' ? '' : <span className='font-bold text-red-600 mb-4 cursor-pointer self-center' onClick={handleOnClick}>
-        My Profile
+        Xem trang cá nhân
       </span>}
     </div>
   )

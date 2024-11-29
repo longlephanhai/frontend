@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Input, Button, Row, Col, Card } from 'antd';
 import SummaryApi from '../../common';
+import Map from '../../components/Map/Map';
+import { toast } from 'react-toastify'
+import displayVNDCurrency from '../../helpers/displayCurrency/displayCurrency';
 const Payment = () => {
   const { Item } = Form;
   const [cartItem, setCartItem] = useState([]);
@@ -22,7 +25,7 @@ const Payment = () => {
   useEffect(() => {
     fetchData()
   }, [])
-  console.log("item in cart", cartItem);
+  // console.log("item in cart", cartItem);
 
   const fetchAllProduct = async () => {
     const response = await fetch(SummaryApi.allProduct.url)
@@ -33,8 +36,6 @@ const Payment = () => {
   useEffect(() => {
     fetchAllProduct()
   }, [])
-  console.log("product list", productList);
-
   const getTotal = localStorage.getItem("total")
   const total = Number(getTotal);
   const [data, setData] = useState({
@@ -48,11 +49,51 @@ const Payment = () => {
     country: "",
     phone: ""
   });
+  const [location, setLocation] = useState([16.0544, 108.2022]);
   const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setData(data => ({ ...data, [name]: value }))
   }
+
+  const handleFind = async () => {
+    const address = `${data.street} ${data.city}`;
+    const geoData = await geocodeAddress(address);
+    if (geoData) {
+      setLocation([geoData.lat, geoData.lon]);
+    }
+  };
+
+  const geocodeAddress = async (address) => {
+    try {
+      const encodedAddress = encodeURIComponent(address);
+      // const response = await fetch(`https://nominatim.openstreetmap.org/ui/search.html?q=${encodedAddress}`);
+      const response = await fetch(SummaryApi.geocode.url, {
+        method: 'post',
+        credentials: 'include',
+        headers: {
+          "content-type": 'application/json'
+        },
+        body: JSON.stringify({ address: encodedAddress })
+      })
+      const data = await response.json();
+      if (data.success) {
+        if (data.data.length === 0) {
+          toast.error("Không tồn tại địa chỉ này")
+          return null;
+        }
+        return data.data[0];
+      } else {
+        toast.error("Không tồn tại địa chỉ này")
+        return null;
+      }
+    } catch (error) {
+      console.error("Error geocoding address:", error);
+      return null;
+    }
+  };
+
+
 
   const sendEmail = async (orderData) => {
     try {
@@ -85,7 +126,6 @@ const Payment = () => {
     }
     let orderItems = [];
     productList.forEach((product) => {
-      // Kiểm tra xem sản phẩm có trong cartItem không
       const quantity = cartItem.find((item) => item.productId._id === product._id);
       if (quantity) {
         orderItems.push({
@@ -97,15 +137,14 @@ const Payment = () => {
         });
       }
     });
-    // Kiểm tra xem orderItems có dữ liệu không
     if (orderItems.length === 0) {
       alert("Your cart is empty or items are missing. Please add items before placing an order.");
       return;
     }
-    console.log(orderItems);
+
     const orderData = {
       userId: cartItem[0].userId,
-      address: data, // Kiểm tra định dạng của data
+      address: data,
       items: orderItems,
       amount: total + 2,
     };
@@ -133,81 +172,99 @@ const Payment = () => {
       alert("Error: Something went wrong. Please try again later.");
     }
   };
+
+
+
   return (
-    <Form onFinish={placeOrder} className='place-order min-h-[100vh]'>
-      <Row gutter={24} style={{ backgroundColor: 'white' }} className='md:h-[100vh]'>
-        <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
-          <Card title="Delivery Information" bordered={false} style={{ height: '100%', border: 'none' }}>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Item name='firstName' rules={[{ required: true, message: 'First name is required' }]}>
-                  <Input name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' />
-                </Item>
-              </Col>
-              <Col span={12}>
-                <Item name='lastName' rules={[{ required: true, message: 'Last name is required' }]}>
-                  <Input name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' />
-                </Item>
-              </Col>
-            </Row>
-            <Item name='email' rules={[{ required: true, type: 'email', message: 'Valid email is required' }]}>
-              <Input name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' />
-            </Item>
-            <Item name='street' rules={[{ required: true, message: 'Street is required' }]}>
-              <Input name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' />
-            </Item>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Item name='city' rules={[{ required: true, message: 'City is required' }]}>
-                  <Input name='city' onChange={onChangeHandler} value={data.city} placeholder='City' />
-                </Item>
-              </Col>
-              <Col span={12}>
-                <Item name='state' rules={[{ required: true, message: 'State is required' }]}>
-                  <Input name='state' onChange={onChangeHandler} value={data.state} placeholder='State' />
-                </Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
-                <Item name='zipcode' rules={[{ required: true, message: 'Zip code is required' }]}>
-                  <Input name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' />
-                </Item>
-              </Col>
-              <Col span={12}>
-                <Item name='country' rules={[{ required: true, message: 'Country is required' }]}>
-                  <Input name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' />
-                </Item>
-              </Col>
-            </Row>
-            <Item name='phone' rules={[{ required: true, message: 'Phone number is required' }]}>
-              <Input name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' />
-            </Item>
-          </Card>
-        </Col>
-        <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
-          <Card title="Cart Totals" bordered={false} style={{ height: '100%', border: 'none' }}>
-            <div className='cart-total'>
-              <div className='cart-total-details'>
-                <p>Subtotal</p>
-                <p>{total}</p>
+    <>
+      <Form onFinish={placeOrder} className='place-order min-h-screen'>
+        <Row gutter={24} style={{ backgroundColor: 'white' }} className='h-full'>
+          <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
+            <Card title="Thông tin giao hàng" bordered={false} style={{ height: '100%', border: 'none' }}>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Item name='firstName' rules={[{ required: true, message: 'First name is required' }]}>
+                    <Input name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='Tên' />
+                  </Item>
+                </Col>
+                <Col span={12}>
+                  <Item name='lastName' rules={[{ required: true, message: 'Last name is required' }]}>
+                    <Input name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Tên đệm' />
+                  </Item>
+                </Col>
+              </Row>
+              <Item name='email' rules={[{ required: true, type: 'email', message: 'Valid email is required' }]}>
+                <Input name='email' onChange={onChangeHandler} value={data.email} placeholder='Địa chỉ email' />
+              </Item>
+              <Item name='street' rules={[{ required: true, message: 'Street is required' }]}>
+                <Input name='street' onChange={onChangeHandler} value={data.street} placeholder='Đường' />
+              </Item>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Item name='city' rules={[{ required: true, message: 'City is required' }]}>
+                    <Input name='city' onChange={onChangeHandler} value={data.city} placeholder='Thành phố' />
+                  </Item>
+                </Col>
+                <Col span={12}>
+                  <Item name='state' rules={[{ required: true, message: 'District is required' }]}>
+                    <Input name='state' onChange={onChangeHandler} value={data.state} placeholder='Huyện' />
+                  </Item>
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Item name='zipcode' rules={[{ required: true, message: 'Zip code is required' }]}>
+                    <Input name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Xã' />
+                  </Item>
+                </Col>
+                <Col span={12}>
+                  <Item name='country' rules={[{ required: true, message: 'Country is required' }]}>
+                    <Input name='country' onChange={onChangeHandler} value={data.country} placeholder='Phường' />
+                  </Item>
+                </Col>
+              </Row>
+              <Row gutter={[16, 16]}>
+                <Col span={24}>
+                  <Item name='phone' rules={[{ required: true, message: 'Phone number is required' }]}>
+                    <Input name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Số điện thoại' />
+                  </Item>
+                  <Button type='primary' danger onClick={handleFind}>Kiểm tra vị trí giao hàng</Button>
+                </Col>
+                <Col span={24}>
+                  <Item name='map'>
+                    <div style={{ height: '400px', width: '100%' }}>
+                      <Map location={location} />
+                    </div>
+                  </Item>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col xxl={12} xl={12} lg={12} md={24} sm={24} xs={24} style={{ backgroundColor: 'white', padding: '20px' }}>
+            <Card title="Tổng số giỏ hàng" bordered={false} style={{ height: '100%', border: 'none' }}>
+              <div className='cart-total'>
+                <div className='cart-total-details'>
+                  <p>Tổng cộng</p>
+                  <p>{displayVNDCurrency(total)}</p>
+                </div>
+                <hr />
+                <div className='cart-total-details'>
+                  <p>Phí giao hàng</p>
+                  <p>{displayVNDCurrency(total === 0 ? 0 : 2)}</p>
+                </div>
+                <hr />
+                <div className='cart-total-details'>
+                  <p>Tổng tiền</p>
+                  <p>{displayVNDCurrency(total === 0 ? 0 : Number(total) + 2)}</p>
+                </div>
+                <Button type='primary' htmlType='submit' style={{ marginTop: '20px', width: '100%' }}>Tiến hành thanh toán</Button>
               </div>
-              <hr />
-              <div className='cart-total-details'>
-                <p>Delivery Fee</p>
-                <p>${total === 0 ? 0 : 2}</p>
-              </div>
-              <hr />
-              <div className='cart-total-details'>
-                <p>Total</p>
-                <p>{total === 0 ? 0 : Number(total) + 2}</p>
-              </div>
-              <Button type='primary' htmlType='submit' style={{ marginTop: '20px', width: '100%' }}>PROCEED TO PAYMENT</Button>
-            </div>
-          </Card>
-        </Col>
-      </Row>
-    </Form>
+            </Card>
+          </Col>
+        </Row>
+      </Form>
+
+    </>
   )
 }
 

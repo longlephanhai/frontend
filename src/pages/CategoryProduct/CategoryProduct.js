@@ -17,7 +17,7 @@ const CategoryProduct = () => {
   });
   const [selectCategory, setSelectCategory] = useState(urlCategoryObject);
   const [filterCategory, setFilterCategory] = useState([]);
-  const [sortProduct, setSortProduct] = useState("asc"); // Set default value for sortProduct state
+  const [sortProduct, setSortProduct] = useState("asc"); 
 
   const fetchData = async () => {
     const response = await fetch(SummaryApi.filterProduct.url, {
@@ -80,23 +80,23 @@ const CategoryProduct = () => {
         <div className='bg-white p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
           {/* sort */}
           <div className=''>
-            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort</h3>
+            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sắp xếp</h3>
             <form className='text-sm flex flex-col gap-2 py-2'>
               <div className='flex items-center gap-3'>
                 <input type='radio' name='sort' checked={sortProduct === 'asc'} onChange={handleSort} value={"asc"} />
-                <label>Price - Low to High</label>
+                <label>Giá - Thấp đến cao</label>
               </div>
 
               <div className='flex items-center gap-3'>
                 <input type='radio' name='sort' checked={sortProduct === 'desc'} onChange={handleSort} value={"desc"} />
-                <label>Price - High to Low</label>
+                <label>Giá - Cao đến thấp</label>
               </div>
             </form>
           </div>
 
           {/* filter */}
           <div className=''>
-            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Category</h3>
+            <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Thể loại</h3>
             <form className='text-sm flex flex-col gap-2 py-2'>
               {
                 productCategory.map((categoryName, index) => (
@@ -112,7 +112,7 @@ const CategoryProduct = () => {
 
         {/* right */}
         <div className='px-4'>
-          <p className='font-medium text-slate-800 text-lg my-2'>Search Result: {data.length}</p>
+          <p className='font-medium text-slate-800 text-lg my-2'>Kết quả tìm kiếm: {data.length}</p>
           <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
             <VerticalCard data={data} />
           </div>

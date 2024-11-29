@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import banner1 from '../../assest/assest/banner2/home_group_banner_item_image_1.webp';
-import banner2 from '../../assest/assest/banner2/home_group_banner_item_image_2.webp';
-import banner3 from '../../assest/assest/banner2/home_group_banner_item_image_3.webp';
-import banner4 from '../../assest/assest/banner2/home_group_banner_item_image_4.webp';
-import banner5 from '../../assest/assest/banner2/home_fsale_image.webp';
+import banner1 from '../../assest/assest/col2_htb_img_1.webp';
+import banner2 from '../../assest/assest/2_11zon.webp';
+import banner3 from '../../assest/assest/poster-quang-cao-san-pham-40_1623306999_11zon.webp';
+import banner4 from '../../assest/assest/poster-quang-cao-sach-2_11zon.webp';
+import banner5 from '../../assest/assest/8_11zon.webp';
 
 const BannerItems = () => {
   return (

@@ -27,7 +27,7 @@ const VerticalCard = ({ loading, data = [] }) => {
                   <p className='text-red-600 font-medium'>{displayUSDCurrency(item?.sellingPrice)}</p>
                   <p className='text-slate-500 line-through'>{displayUSDCurrency(item?.price)}</p>
                 </div>
-                <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-2 py-0.5 rounded-full' onClick={(e) => handleAddToCart(e, item?._id)} >Add to Cart</button>
+                <button className='text-sm bg-red-600 hover:bg-red-700 text-white px-2 py-0.5 rounded-full' onClick={(e) => handleAddToCart(e, item?._id)} >Thêm vào giỏ hàng</button>
               </div>
             </Link>
           )

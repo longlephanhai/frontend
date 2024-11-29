@@ -6,7 +6,7 @@ import SummaryApi from '../../common';
 import { toast } from 'react-toastify';
 import { RxAvatar } from "react-icons/rx";
 import { Avatar } from 'antd';
-import loginIcon from '../../assest/assest/logomini.webp'
+import loginIcon from '../../assest/assest/Remove-bg.ai_1732618552132.webp'
 import imageTobass64 from '../../helpers/imageTobass64.js/imageTobass64';
 import uploadImage from '../../helpers/uploadImage/uploadImage';
 const SignUp = () => {
@@ -86,7 +86,7 @@ const SignUp = () => {
               <form>
                 <label>
                   <div className='text-xs bg-opacity-80 bg-slate-200 pb-3 pt-2 text-center absolute bottom-0 w-full cursor-pointer'>
-                    Upload Image
+                    Chọn ảnh đại diện
                   </div>
                   <input
                     onChange={handleUploadPic}
@@ -98,12 +98,12 @@ const SignUp = () => {
             </div>
             <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
               <div className='grid'>
-                <label >Name : </label>
+                <label >Họ và tên : </label>
                 <div className='bg-slate-100 p-2'>
                   <input
                     required
                     type='text'
-                    placeholder='enter your name'
+                    placeholder='Nhập họ và tên'
                     name='name'
                     value={data.name}
                     onChange={handleOnChange}
@@ -116,7 +116,7 @@ const SignUp = () => {
                   <input
                     required
                     type='email'
-                    placeholder='enter email'
+                    placeholder='Nhập email'
                     name='email'
                     value={data.email}
                     onChange={handleOnChange}
@@ -125,11 +125,11 @@ const SignUp = () => {
               </div>
 
               <div>
-                <label>Password : </label>
+                <label>Mật khẩu : </label>
                 <div className='bg-slate-100 p-2 flex'>
                   <input type={showPassword ? "text" : "password"}
                     required
-                    placeholder='enter password'
+                    placeholder='Nhập mật khẩu'
                     value={data.password}
                     name='password'
                     onChange={handleOnChange}
@@ -151,11 +151,11 @@ const SignUp = () => {
               </div>
 
               <div>
-                <label>Confirm Password : </label>
+                <label>Xác nhận mật khẩu : </label>
                 <div className='bg-slate-100 p-2 flex'>
                   <input
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder='enter confirm password'
+                    placeholder='Nhập lại mật khẩu'
                     value={data.confirmPassword}
                     name='confirmPassword'
                     onChange={handleOnChange}
@@ -177,10 +177,10 @@ const SignUp = () => {
                   </div>
                 </div>
               </div>
-              <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Sign Up</button>
+              <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Đăng ký</button>
             </form>
 
-            <p className='my-5'>Already have account ? <Link to={'/login'} className='text-red-600 hover:text-red-700 hover:underline'>Login</Link></p>
+            <p className='my-5'>Đã có tài khoản ? <Link to={'/login'} className='text-red-600 hover:text-red-700 hover:underline'>Đăng nhập</Link></p>
           </div>
 
         </div>

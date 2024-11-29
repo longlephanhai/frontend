@@ -18,7 +18,7 @@ const SearchProduct = () => {
 	}, [params])
 	return (
 		<div className='container mx-auto'>
-			<p className='text-lg font-semibold my-3'>Search Result: {data.length}</p>
+			<p className='text-lg font-semibold my-3'>Kết quả tìm kiếm: {data.length}</p>
 			{
 				data.length !== 0 && (
 					<VerticalCard data={data} />

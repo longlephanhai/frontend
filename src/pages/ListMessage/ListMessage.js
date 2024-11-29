@@ -151,7 +151,7 @@ const ListMessage = () => {
   return (
     <div className='flex flex-wrap -ml-5'>
       <div className='flex flex-col p-4 gap-4 border min-h-[100vh] bg-white overflow-y-auto'>
-        <b>Contact</b>
+        <b>Liên hệ</b>
         {
           dataList.map((item, index) => (
             <div
@@ -244,7 +244,7 @@ const ListMessage = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyUp={handleOnKeyUP}
-                  placeholder="Type your message..."
+                  placeholder="Nhập tin nhắn của bạn..."
                 />
                 <MdEmojiEmotions
                   onClick={() => setOpen(true)}
@@ -256,7 +256,7 @@ const ListMessage = () => {
                 className="ml-3 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                 onClick={handleSendMessage}
               >
-                Send
+                Gửi
               </button>
               <div style={{ display: 'none' }}>
                 <input type='file' name='myImage' ref={imageRef} onChange={onImageChange} accept='image/*' />

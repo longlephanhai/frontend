@@ -2,19 +2,17 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import './Brand.scss' // Create a separate CSS file for styling
-import brand1 from '../../assest/assest/brand_1.webp'
-import brand2 from '../../assest/assest/brand_2.webp'
-import brand3 from '../../assest/assest/brand_3.webp'
-import brand4 from '../../assest/assest/brand_4.webp'
-import brand5 from '../../assest/assest/brand_5.webp'
-import brand6 from '../../assest/assest/brand_7.webp'
+import './Brand.scss' 
+import brand1 from '../../assest/assest/logo-_5_.webp'
+import brand2 from '../../assest/assest/footer_logo_shipment_1.webp'
+import brand3 from '../../assest/assest/logo-trong-suot-2.webp'
+import brand4 from '../../assest/assest/logo_book365.webp'
+import brand5 from '../../assest/assest/logo-new.webp'
+import brand6 from '../../assest/assest/logosach.webp'
 
 const Brand = () => {
   return (

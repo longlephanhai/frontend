@@ -18,7 +18,7 @@ const FollowersCard = () => {
   }, [])
   return (
     <div className='w-full rounded-[0.7rem] gap-4 md:flex flex-col text-[13px] hidden'>
-      <h4 className='font-bold text-md'>Who is following you</h4>
+      <h4 className='font-bold text-md'>Ai đang theo dõi bạn?</h4>
       {
         data?.map((item, index) => {
           return (
@@ -32,7 +32,7 @@ const FollowersCard = () => {
                       <span className='font-light tracking-tighter'>@{item.name}</span>
                     </div>
                   </div>
-                  <button className='flex items-center justify-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600 hover:border-[1px]'>Follow</button>
+                  <button className='flex items-center justify-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600 hover:border-[1px]'>Theo dõi</button>
                 </div>
               ) : (
                 <FaCircleUser />

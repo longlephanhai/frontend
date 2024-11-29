@@ -101,22 +101,20 @@ const Home = () => {
       <div className=''>
         <BannerProduct />
       </div>
-
       <Brand />
-
       <BannerItems />
       <Countdown targetDate={targetDate} />
       <div className='m-4 mt-6' id="category">
         <CategoryList />
       </div>
-      <HorizontalCartProduct category={"blush"} heading={"Top's Blush"} time={3000}/>
-      <HorizontalCartProduct category={"facialoil"} heading={"Top's Facialoil"} time={5000} />
-      <HorizontalCartProduct category={"facialoil-cleanser"} heading={"Top's Facialoil-Cleanser"} time={3000}/>
-      <HorizontalCartProduct category={"lipstick"} heading={"Top's Lipstick"} time={5000}/>
-      <HorizontalCartProduct category={"perfume"} heading={"Top's Perfume"} time={3000}/>
-      <HorizontalCartProduct category={"serum"} heading={"Top's Serum"} time={5000}/>
-      <HorizontalCartProduct category={"sunscreen"} heading={"Top's Sunscreen"} time={3000}/>
-      <HorizontalCartProduct category={"toner"} heading={"Top's Toner"} time={5000}/>
+      <HorizontalCartProduct category={"lich-su"} heading={"Lịch sử"} time={3000}/>
+      <HorizontalCartProduct category={"tieng-anh"} heading={"Tiếng anh"} time={5000} />
+      <HorizontalCartProduct category={"toan-hoc"} heading={"Toán học"} time={3000}/>
+      <HorizontalCartProduct category={"khoa-hoc"} heading={"Khoa học"} time={5000}/>
+      <HorizontalCartProduct category={"truyen-tranh"} heading={"Truyện tranh"} time={3000}/>
+      <HorizontalCartProduct category={"van-hoc"} heading={"Văn học"} time={5000}/>
+      <HorizontalCartProduct category={"dia-ly"} heading={"Địa lý"} time={3000}/>
+      <HorizontalCartProduct category={"vat-ly"} heading={"Vật lý"} time={5000}/>
       {/* <FeatureArea className='mt-7' /> */}
       {/* <ProductArea/> */}
        <button

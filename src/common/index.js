@@ -1,5 +1,5 @@
-export const backendDomin = "https://backend-jyob.onrender.com"
-// export const backendDomin = "http://localhost:8080"
+// export const backendDomin = "https://backend-jyob.onrender.com"
+export const backendDomin = process.env.REACT_APP_BACKEND_URL
 const SummaryApi = {
   signUp: {
     url: `${backendDomin}/api/signup`,
@@ -235,6 +235,14 @@ const SummaryApi = {
   },
   getOneFriend: {
     url: `${backendDomin}/api/get-one-friend`,
+    method: 'post'
+  },
+  geocode: {
+    url: `${backendDomin}/api/location`,
+    method: 'post'
+  },
+  loginGoogle: {
+    url: `${backendDomin}/api/google-login`,
     method: 'post'
   }
 }

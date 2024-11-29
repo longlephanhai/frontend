@@ -66,7 +66,7 @@ const ReviewProduct = ({ productId }) => {
   };
   return (
     <div className="p-6 rounded-lg mt-6">
-      <h2 className="text-3xl font-bold mb-6 text-gray-900">Product Review</h2>
+      <h2 className="text-3xl font-bold mb-6 text-gray-900">Đánh giá sản phẩm</h2>
       <form onSubmit={handleSubmmit} className="mb-8">
         <div className="flex flex-col md:flex-row  gap-4 mb-6">
           <div className="flex  items-center">
@@ -75,7 +75,7 @@ const ReviewProduct = ({ productId }) => {
         </div>
         <textarea
           className="w-full p-3 border border-gray-300 rounded-lg mb-6 resize-none focus:outline-none focus:ring-2 focus:ring-red-400"
-          placeholder="Your comment"
+          placeholder="Đánh giá của bạn về sản phẩm này"
           value={comment}
           required
           onChange={e => setComment(e.target.value)}
@@ -84,11 +84,11 @@ const ReviewProduct = ({ productId }) => {
           type="submit"
           className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition duration-300"
         >
-          Send Review
+          Gửi đánh giá
         </button>
       </form>
       <div className="space-y-8">
-        <p className='text-xl font-medium'>{reviews.length} reviews for this product</p>
+        <p className='text-xl font-medium'>{reviews.length} đánh giá cho sản phẩm này</p>
         <hr />
         <div className='max-h-96 overflow-hidden overflow-y-auto'>
           {reviews.map((review, index) => (

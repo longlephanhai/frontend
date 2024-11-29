@@ -101,7 +101,7 @@ const PostById = () => {
                 onClick={() => imageRef.current.click()} onChange={handleOnchange}
               >
                 <CiImageOn className='w-5 sm:w-6 h-auto' />
-                Photo
+                Ảnh
               </div>
               <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer text-blue-600'>
                 <BiSolidCaretRightCircle className='w-6 h-auto' />
@@ -110,17 +110,17 @@ const PostById = () => {
               <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px] cursor-pointer
           text-red-600'>
                 <HiOutlineMapPin className='w-6 h-auto' />
-                Location
+                Địa điểm
               </div>
               <div className='p-[5px] px-[10px] rounded-[10px] flex items-center justify-center text-[12px] sm:text-[14px]  cursor-pointer
           text-yellow-600'>
                 <FaRegCalendarAlt className='w-6 h-auto' />
-                Shedule
+                Sự kiện
               </div>
               <button className='flex items-center border justify-center text-white rounded-lg bg-red-600 transition-[all_100ms_ease-out] h-8 px-[20px] hover:text-red-500 hover:bg-transparent hover:border-red-600'
                 onClick={handleSubmit}
               >
-                Share
+                Chia sẻ
               </button>
               <div style={{ display: 'none' }}>
                 <input type='file' name='myImage' ref={imageRef} onChange={onImageChange} accept='image/*' />

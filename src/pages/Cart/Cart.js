@@ -85,8 +85,8 @@ const Cart = () => {
       context.fetchUserAddToCart()
     }
   }
-  const totalQuantity = data.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0)
-  const totalPrice = data.reduce((preve, curr) => preve + (curr.quantity * curr.productId?.sellingPrice), 0)
+  const totalQuantity = data?.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0)
+  const totalPrice = data?.reduce((preve, curr) => preve + (curr.quantity * curr.productId?.sellingPrice), 0)
   localStorage.setItem("total", totalPrice)
   return (
     <div className='container mx-auto'>
@@ -103,7 +103,7 @@ const Cart = () => {
         {/* display product */}
         <div className='w-full max-w-3xl'>
           {
-            data.map((item, index) => {
+            data?.map((item, index) => {
               return (
                 <div key={index} className='w-full bg-white h-32 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]'>
                   <div className='w-32 h-32 bg-slate-200'>
@@ -117,8 +117,8 @@ const Cart = () => {
                     <h2 className='text-lg lg:text-2xl text-ellipsis line-clamp-1'>{item?.productId?.productName}</h2>
                     <p className='capitalize text-slate-500'>{item?.productId?.category}</p>
                     <div className='flex items-center justify-between'>
-                      <p className='text-red-600 font-medium text-lg'>{displayUSDCurrency(item?.productId.sellingPrice)}</p>
-                      <p className='text-slate-600 font-senibold text-lg'>{displayUSDCurrency(item?.productId.sellingPrice * item?.quantity)}</p>
+                      <p className='text-red-600 font-medium text-lg'>{displayUSDCurrency(item?.productId?.sellingPrice)}</p>
+                      <p className='text-slate-600 font-senibold text-lg'>{displayUSDCurrency(item?.productId?.sellingPrice * item?.quantity)}</p>
                     </div>
                     <div className='flex items-center gap-3 mt-1'>
                       <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded-full' onClick={() => decreaseQty(item?._id, item.quantity)}>-</button>
@@ -137,15 +137,15 @@ const Cart = () => {
         {data.length !== 0 && (
           <div className="mt-6  pt-2 lg:mt-0 w-full max-w-sm">
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Summary</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Tổng đơn hàng</h2>
 
               <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
-                <p className="text-lg text-gray-700">Quantity:</p>
+                <p className="text-lg text-gray-700">Số lượng:</p>
                 <p className="text-lg font-bold text-red-600">{totalQuantity}</p>
               </div>
 
               <div className="flex justify-between items-center border-b-2 border-gray-200 py-2">
-                <p className="text-lg text-gray-700">Total Price:</p>
+                <p className="text-lg text-gray-700">Tổng giá tiền:</p>
                 <p className="text-lg font-bold text-red-600">{displayUSDCurrency(totalPrice)}</p>
               </div>
 
@@ -153,7 +153,7 @@ const Cart = () => {
                 onClick={() => navigate('/payment')}
                 className="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors"
               >
-                Proceed to Payment
+                Tiến hành thanh toán
               </button>
             </div>
           </div>

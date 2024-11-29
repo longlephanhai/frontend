@@ -15,7 +15,7 @@
     align-items: center;
     font-size: 14px;
     color: #454545;
-    border: 1px solid #FB6A9A;
+    border: 1px solid red;
 }
 
 .my-orders-orders img {
@@ -23,7 +23,7 @@
 }
 
 .my-orders-orders p span {
-    color: #FB6A9A;
+    color: red;
 }
 
 .my-orders-orders p b {
@@ -35,7 +35,7 @@
     border: none;
     padding: 12px 0px;
     border-radius: 4px;
-    background-color: #FB6A9A;
+    background-color: rgba(246, 58, 58, 0.805);
     cursor: pointer;
     color: #454545;
 }

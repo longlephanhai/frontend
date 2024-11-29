@@ -54,25 +54,25 @@ const AdminPanel = () => {
 
         <Menu mode="inline" defaultSelectedKeys={['1']} style={{ backgroundColor: '#fff' }}>
           <Menu.Item key="1" icon={<FaChartLine />}>
-            <Link to="dashboard">DashBoard</Link>
+            <Link to="dashboard">Bảng điều khiển</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<FaCalendar />}>
-            <Link to="calendar">Calendar</Link>
+            <Link to="calendar">Lịch</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<FaUsers />}>
-            <Link to="all-users">All Users</Link>
+            <Link to="all-users">Người dùng</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<AiOutlineProduct />}>
-            <Link to="all-products">All Products</Link>
+            <Link to="all-products">Sản phẩm</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<FaBoxOpen />}>
-            <Link to="orderlist">Orders List</Link>
+            <Link to="orderlist">Đơn hàng</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<FaImage />}>
-            <Link to="post-list">Posts</Link>
+            <Link to="post-list">Bài viết</Link>
           </Menu.Item>
           <Menu.Item key="7" icon={<AiFillMessage />}>
-            <Link to="list-message">Message</Link>
+            <Link to="list-message">Tin nhắn</Link>
           </Menu.Item>
         </Menu>
       </Sider>
