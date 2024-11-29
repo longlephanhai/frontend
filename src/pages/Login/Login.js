@@ -9,6 +9,7 @@ import { RxAvatar } from "react-icons/rx";
 import { Avatar } from 'antd';
 import io from 'socket.io-client';
 import Hooks from '../../components/hooks/Hooks';
+import ModalStep from '../../components/ModalStep/ModalStep';
 const Login = () => {
   // local login
   const socketRef = useRef(null);
@@ -27,6 +28,15 @@ const Login = () => {
     }));
   };
 
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataResponse = await fetch(SummaryApi.signIn.url, {
@@ -46,7 +56,15 @@ const Login = () => {
       socketRef.current = io(backendDomin);
     }
     if (dataApi.error) {
+      console.log(dataApi.message);
+
       toast.error(dataApi.message);
+      if (dataApi.message === 'Please confirm your email address') {
+        setEmail(data.email);
+        setIsModalOpen(true);
+
+      }
+
     }
   };
 
@@ -134,10 +152,10 @@ const Login = () => {
           </form>
 
           <div id='loginDiv' className='mt-6 self-center '></div>
-
           <p className='mt-5 text-sm text-center'>Không có tài khoản? <Link to={'/sign-up'} className='text-red-600 hover:text-red-700'>Đăng ký</Link></p>
         </div>
       </div>
+      <ModalStep isModalOpen={isModalOpen} handleOk={handleOk} handleCancel={handleCancel} email={email} />
     </section>
   );
 };

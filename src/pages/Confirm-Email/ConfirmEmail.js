@@ -1,15 +1,89 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { LockOutlined } from '@ant-design/icons';
+import { Button, Card, Input, Form } from 'antd';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import SummaryApi from '../../common';
+
 
 const ConfirmEmail = () => {
+  const [form] = Form.useForm()
+  const navigate = useNavigate()
+  const [isLoading, setIsLoadind] = useState(false)
+  const params = useParams()
+  const id = params.id
+  useEffect(() => {
+    form.setFieldsValue({
+      _id: id
+    })
+  }, [])
+  const onFinish = async (values) => {
+    const response = await axios.post(SummaryApi.checkCodeId.url, values)
+    if (response.data.success) {
+      toast.success(response.data.message)
+      setIsLoadind(false)
+      navigate('/login')
+    }
+    
+  }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-lg rounded-lg">
-        <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">Confirm Email</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">Please check your email to complete registration.</p>
-        </div>
-      </div>
-    </div>
+    <Card title="Trang nhập mã xác thực">
+      <Form
+        name="basic"
+        form={form}
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        style={{
+          maxWidth: 600,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        autoComplete="off"
+      >
+        <Form.Item
+          name="_id"
+          label="ID"
+          style={{ display: 'none' }}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          name="code"
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+          rules={[
+            {
+              required: true,
+              message: 'Vui lòng nhập mã xác nhận!',
+            },
+          ]}
+        >
+          <Input prefix={<LockOutlined />} placeholder='Mã xác nhận' />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit" loading={isLoading} >
+            Gửi
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
   );
 };
 

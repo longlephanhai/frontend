@@ -51,8 +51,9 @@ const SignUp = () => {
       })
       const responseData = await dataResponse.json()
       if (responseData.success) {
+        console.log(responseData.data)
         toast.success(responseData.message);
-        navigate('/confirm-email')
+        navigate(`/confirm-email/${responseData.data._id}`)
       }
       if (responseData.error) {
         toast.error(responseData.message);
@@ -61,7 +62,7 @@ const SignUp = () => {
       console.log("Please check")
     }
   }
-  console.log(data)
+  
   return (
     <div>
       <section id='signup'>

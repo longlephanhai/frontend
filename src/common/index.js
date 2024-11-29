@@ -244,6 +244,14 @@ const SummaryApi = {
   loginGoogle: {
     url: `${backendDomin}/api/google-login`,
     method: 'post'
+  },
+  checkCodeId:{
+    url: `${backendDomin}/api/check-code`,
+    method: 'post'
+  },
+  retryActive:{
+    url: `${backendDomin}/api/retry-active`,
+    method: 'post'
   }
 }
 

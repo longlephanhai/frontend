@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
         element: <SignUp />
       },
       {
-        path: "/confirm-email",
+        path: "/confirm-email/:id",
         element: <ConfirmEmail />
       },
       {
